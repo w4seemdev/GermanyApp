@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 import { SERVICES_IN_ORDER } from '@/content/shared/services.meta';
 import { LOCALES } from '@/lib/locale';
+import { SITE_URL } from '@/lib/site-url';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://zukunftservice.de';
 
 /** German segments, used in both locales - see src/lib/routes.ts. */
 const STATIC_SEGMENTS = ['', 'leistungen', 'kontakt'];

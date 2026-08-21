@@ -18,8 +18,8 @@
 
 import { NAP } from '@/content/shared/nap';
 import type { DayKey, Locale, SiteContent } from '@/types/content';
+import { SITE_URL } from '@/lib/site-url';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://zukunftservice.de';
 
 /** schema.org expects full English day names. */
 const SCHEMA_DAY: Record<DayKey, string> = {

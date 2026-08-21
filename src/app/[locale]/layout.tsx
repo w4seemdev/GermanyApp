@@ -21,8 +21,8 @@ import { WhatsAppFab } from '@/components/layout/WhatsAppFab';
 import { StructuredData } from '@/components/seo/StructuredData';
 import { getSiteContent } from '@/content';
 import { DIRECTION, LOCALES, isLocale } from '@/lib/locale';
+import { SITE_URL } from '@/lib/site-url';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://zukunftservice.de';
 
 const sans = IBM_Plex_Sans({
   subsets: ['latin'],
