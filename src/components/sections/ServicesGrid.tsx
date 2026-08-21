@@ -13,6 +13,7 @@
 import Link from 'next/link';
 
 import { Icon } from '@/components/ui/Icon';
+import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { getServiceCards } from '@/content';
 import { SERVICES_IN_ORDER } from '@/content/shared/services.meta';
@@ -29,10 +30,11 @@ export function ServicesGrid({ locale, content }: { locale: Locale; content: Sit
         <SectionHeading heading={content.services.heading} />
 
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES_IN_ORDER.map((meta) => {
+          {SERVICES_IN_ORDER.map((meta, index) => {
             const card = cards[meta.id];
             return (
               <li key={meta.id}>
+                <Reveal delayMs={index * 60} className="h-full">
                 <Link
                   href={servicePath(locale, meta.id)}
                   className="focus-ring group flex h-full flex-col gap-3 rounded-lg border border-border-subtle bg-surface-raised p-6 transition-colors duration-200 hover:border-border-accent"
@@ -49,6 +51,7 @@ export function ServicesGrid({ locale, content }: { locale: Locale; content: Sit
                     {content.services.detailLabel} <span aria-hidden="true">{arrow}</span>
                   </span>
                 </Link>
+                </Reveal>
               </li>
             );
           })}

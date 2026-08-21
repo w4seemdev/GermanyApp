@@ -8,6 +8,7 @@
  * arrows, so nothing needs flipping under RTL.
  */
 
+import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import type { SiteContent } from '@/types/content';
 
@@ -20,11 +21,13 @@ export function Process({ content }: { content: SiteContent }) {
         <SectionHeading heading={process.heading} />
 
         <ol className="mt-12 grid gap-8 md:grid-cols-3">
-          {process.steps.map((step) => (
-            <li key={step.id} className="flex flex-col gap-3 border-t-2 border-border-accent pt-5">
+          {process.steps.map((step, index) => (
+            <li key={step.id}>
+              <Reveal delayMs={index * 90} className="flex flex-col gap-3 border-t-2 border-border-accent pt-5">
               <span className="text-eyebrow text-accent-text tabular-nums">{step.index}</span>
               <h3 className="text-title text-text-heading">{step.title}</h3>
               <p className="text-body-sm text-text-secondary">{step.body}</p>
+              </Reveal>
             </li>
           ))}
         </ol>

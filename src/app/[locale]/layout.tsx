@@ -17,8 +17,12 @@ import '../globals.css';
 
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { WhatsAppFab } from '@/components/layout/WhatsAppFab';
+import { StructuredData } from '@/components/seo/StructuredData';
 import { getSiteContent } from '@/content';
 import { DIRECTION, LOCALES, isLocale } from '@/lib/locale';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://zukunftservice.de';
 
 const sans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -55,15 +59,31 @@ export async function generateMetadata({
 
   const { meta } = getSiteContent(locale);
   return {
+    // metadataBase makes every relative URL below absolute. Without it,
+    // Open Graph images and canonicals resolve against localhost in previews.
+    metadataBase: new URL(SITE_URL),
     title: { default: meta.homeTitle, template: `%s — ${meta.siteName}` },
     description: meta.homeDescription,
     alternates: {
+      canonical: `/${locale}`,
       languages: {
         de: '/de',
         ar: '/ar',
         'x-default': '/de',
       },
     },
+    openGraph: {
+      type: 'website',
+      siteName: meta.siteName,
+      title: meta.homeTitle,
+      description: meta.homeDescription,
+      url: `/${locale}`,
+      locale: locale === 'de' ? 'de_DE' : 'ar_AR',
+      alternateLocale: locale === 'de' ? 'ar_AR' : 'de_DE',
+    },
+    // No og:image yet — the client has not supplied photography, and a
+    // generated placeholder card looks worse in a WhatsApp preview than none.
+    twitter: { card: 'summary' },
   };
 }
 
@@ -83,9 +103,11 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={DIRECTION[locale]} className={fontVars}>
       <body className="min-h-dvh bg-surface text-ink antialiased">
+        <StructuredData locale={locale} content={content} />
         <Header locale={locale} content={content} />
         <main id="inhalt">{children}</main>
         <Footer locale={locale} content={content} year={new Date().getFullYear()} />
+        <WhatsAppFab content={content} />
       </body>
     </html>
   );
