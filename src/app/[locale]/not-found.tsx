@@ -8,7 +8,7 @@ import { DIRECTION, LOCALES } from '@/lib/locale';
  *
  * Next does not pass route params to not-found.tsx, so this page cannot know
  * which language the visitor was heading for. Rather than guess and show an
- * Arabic speaker a German dead end, it offers both — which is also the most
+ * Arabic speaker a German dead end, it offers both - which is also the most
  * useful thing a bilingual site can do when someone arrives from a broken link.
  *
  * Each half carries its own `lang` and `dir` so both scripts lay out correctly

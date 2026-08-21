@@ -27,7 +27,7 @@ export function Header({ locale, content }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close the panel on navigation — without this the menu stays open over the
+  // Close the panel on navigation - without this the menu stays open over the
   // new page after a client-side transition.
   useEffect(() => {
     setIsOpen(false);
@@ -35,6 +35,15 @@ export function Header({ locale, content }: HeaderProps) {
 
   const { nav, meta, a11y } = content;
   const contactHref = routePath(locale, 'contact');
+
+  // The contact link is already the green CTA on the right, so rendering it in
+  // the nav as well printed "Kontakt" twice in the same bar and ate the width
+  // the rest of the nav needed. Desktop nav drops it; the mobile panel keeps
+  // the full list, because there the CTA is not visible.
+  const contactItem = nav.primary.find(
+    (item) => item.target.kind === 'route' && item.target.routeId === 'contact',
+  );
+  const desktopNav = nav.primary.filter((item) => item.id !== contactItem?.id);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-subtle bg-surface/95 backdrop-blur-sm">
@@ -52,7 +61,7 @@ export function Header({ locale, content }: HeaderProps) {
       <div className="mx-auto flex max-w-page items-center gap-4 px-gutter py-3">
         <Link
           href={homePath(locale)}
-          className="focus-ring -ms-1 flex items-center gap-2 rounded-md px-1 py-1"
+          className="focus-ring -ms-1 flex shrink-0 items-center gap-2 rounded-md px-1 py-1"
         >
           {/* The brand name is Latin in both locales and never transliterated. */}
           <span dir="ltr" className="font-heading text-title text-text-heading">
@@ -60,9 +69,9 @@ export function Header({ locale, content }: HeaderProps) {
           </span>
         </Link>
 
-        <nav aria-label={a11y.menuLabel} className="ms-auto hidden lg:block">
+        <nav aria-label={a11y.menuLabel} className="ms-auto hidden min-w-0 lg:block">
           <ul className="flex items-center gap-1">
-            {nav.primary.map((item) => (
+            {desktopNav.map((item) => (
               <li key={item.id}>
                 <Link
                   href={navHref(item.target, locale)}
@@ -94,7 +103,7 @@ export function Header({ locale, content }: HeaderProps) {
               'transition-colors duration-200 hover:bg-brand-hover sm:inline-flex',
             )}
           >
-            {nav.primary[nav.primary.length - 1]?.label ?? content.contact.heading.eyebrow}
+            {contactItem?.label ?? content.contact.heading.eyebrow}
           </Link>
 
           <button

@@ -38,7 +38,7 @@ export function servicePath(locale: Locale, serviceId: ServiceId): string {
  * Resolves a NavTarget to an href.
  *
  * An `anchor` target is returned as an absolute path plus hash rather than a
- * bare `#hash`, so the same nav data works in the footer of a sub-page — where
+ * bare `#hash`, so the same nav data works in the footer of a sub-page - where
  * a bare hash would scroll the wrong page instead of navigating home.
  */
 export function navHref(target: NavTarget, locale: Locale): string {

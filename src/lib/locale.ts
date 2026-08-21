@@ -1,5 +1,5 @@
 /**
- * Locale primitives. No i18n library — see docs/research/03-frontend-architecture.md §5.
+ * Locale primitives. No i18n library - see docs/research/03-frontend-architecture.md §5.
  *
  * URLs are prefix-always (`/de/…`, `/ar/…`) so that `<html lang dir>` is
  * server-rendered and there is no LTR→RTL flash, hreflang is unambiguous, and
@@ -33,7 +33,7 @@ export function otherLocale(locale: Locale): Locale {
 }
 
 /**
- * Rewrites ONLY the locale segment and keeps everything else — remaining path
+ * Rewrites ONLY the locale segment and keeps everything else - remaining path
  * segments, query string and hash. This powers the language button, and the
  * requirement it exists to satisfy is that switching language lands the user on
  * the *equivalent* page rather than dumping them back at the homepage.
@@ -69,7 +69,7 @@ export function swapLocalePath(pathname: string, next: Locale): string {
   const suffix = pathname.slice(cut);
   const normalized = path.startsWith('/') ? path : `/${path}`;
 
-  // ['', 'de', 'leistungen', …] — index 1 is the only candidate locale segment.
+  // ['', 'de', 'leistungen', …] - index 1 is the only candidate locale segment.
   const segments = normalized.split('/');
   const first = segments[1];
 

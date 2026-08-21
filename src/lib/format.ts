@@ -10,7 +10,7 @@
  *     addresses, so `-nu-latn` forces Latin digits.
  *
  * Phone numbers are NEVER run through Intl and are always bidi-isolated by the
- * component that renders them — see `<bdi dir="ltr">` in the design system.
+ * component that renders them - see `<bdi dir="ltr">` in the design system.
  */
 
 import { DAY_KEYS, type OpeningHour } from '@/types/content';
@@ -39,7 +39,7 @@ export function formatWeekday(
   style: 'long' | 'short' = 'long',
 ): string {
   const date = new Date(MONDAY_UTC_MS + dayIndex * DAY_MS);
-  // timeZone: 'UTC' is required — without it a negative-offset runtime formats
+  // timeZone: 'UTC' is required - without it a negative-offset runtime formats
   // the previous day and every label shifts by one.
   return new Intl.DateTimeFormat(DATE_LOCALE[locale], {
     weekday: style,
@@ -96,7 +96,7 @@ export function formatHours(
  * the enquiry arrives pre-qualified.
  *
  * @param phoneDigits Digits only, e.g. '491773825632'. Any punctuation in the
- *                    argument is stripped — wa.me rejects '+' and spaces.
+ *                    argument is stripped - wa.me rejects '+' and spaces.
  * @param text        Plain text; encoded here, so pass it unencoded.
  */
 export function waLink(phoneDigits: string, text?: string): string {

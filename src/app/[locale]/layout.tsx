@@ -1,11 +1,11 @@
 /**
  * Root layout. It lives under [locale] rather than at app/ so that `lang` and
- * `dir` are known at render time and emitted server-side — an LTR-then-RTL
+ * `dir` are known at render time and emitted server-side - an LTR-then-RTL
  * repaint on first load is the single most visible bilingual bug there is.
  *
  * FONTS are self-hosted by next/font at build time. Nothing is ever requested
  * from fonts.gstatic.com at runtime, which keeps visitor IPs out of Google's
- * logs — the exposure LG München I, 3 O 17493/20 turned into damages.
+ * logs - the exposure LG München I, 3 O 17493/20 turned into damages.
  */
 
 import type { Metadata } from 'next';
@@ -62,7 +62,7 @@ export async function generateMetadata({
     // metadataBase makes every relative URL below absolute. Without it,
     // Open Graph images and canonicals resolve against localhost in previews.
     metadataBase: new URL(SITE_URL),
-    title: { default: meta.homeTitle, template: `%s — ${meta.siteName}` },
+    title: { default: meta.homeTitle, template: `%s - ${meta.siteName}` },
     description: meta.homeDescription,
     alternates: {
       canonical: `/${locale}`,
@@ -81,7 +81,7 @@ export async function generateMetadata({
       locale: locale === 'de' ? 'de_DE' : 'ar_AR',
       alternateLocale: locale === 'de' ? 'ar_AR' : 'de_DE',
     },
-    // No og:image yet — the client has not supplied photography, and a
+    // No og:image yet - the client has not supplied photography, and a
     // generated placeholder card looks worse in a WhatsApp preview than none.
     twitter: { card: 'summary' },
   };

@@ -2,7 +2,7 @@
  * Five reasons. Anchor target for the "Warum wir" nav item.
  *
  * The Arabic bodies run roughly twice the length of the German, so the grid is
- * built on `items-start` with no fixed card height — equal-height cards would
+ * built on `items-start` with no fixed card height - equal-height cards would
  * either clip the Arabic or strand the German in whitespace.
  */
 

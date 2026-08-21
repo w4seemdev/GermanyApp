@@ -4,7 +4,7 @@
  * For a business whose customers search "Behördenhilfe Dortmund" on a phone,
  * the knowledge panel matters more than any on-page SEO. This is built from the
  * same NAP object the footer renders, so what a human reads and what Google
- * indexes are guaranteed identical — the classic local-SEO failure is those two
+ * indexes are guaranteed identical - the classic local-SEO failure is those two
  * drifting apart.
  *
  * `openingHoursSpecification` uses the client-CONFIRMED Mo–Fr 10:00–16:00, which
@@ -12,8 +12,8 @@
  * these directly, so the discrepancy is worth resolving with the client.
  *
  * Rendered with dangerouslySetInnerHTML because that is the only way to emit a
- * ld+json script. The input is entirely our own typed constants — no user
- * content reaches it — and JSON.stringify escapes the values.
+ * ld+json script. The input is entirely our own typed constants - no user
+ * content reaches it - and JSON.stringify escapes the values.
  */
 
 import { NAP } from '@/content/shared/nap';

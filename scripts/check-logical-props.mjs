@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * check-logical-props — the RTL build gate.
+ * check-logical-props - the RTL build gate.
  *
  * The site must mirror into Arabic for free. That only holds if every
  * directional value in the codebase is *logical* (`ps-` `pe-` `ms-` `me-`
@@ -13,7 +13,7 @@
  * Retrofitting RTL costs 3–4× building it in, so this runs from commit 1.
  *
  * Escape hatch: any line containing the token rtl-ok inside a comment is
- * skipped. Reserve it for genuine exceptions — a `background-position` pair
+ * skipped. Reserve it for genuine exceptions - a `background-position` pair
  * under explicit `[dir=ltr]` / `[dir=rtl]` selectors is the usual one, because
  * CSS has no logical syntax for gradients or background positions.
  *
@@ -61,7 +61,7 @@ const RULES = [
     fix: 'use rounded-s- rounded-e-',
     re: /(?<![\w-])rounded-[lr](?![a-z])/g,
   },
-  // Physical CSS longhands — same defect class, and a .css file is exactly
+  // Physical CSS longhands - same defect class, and a .css file is exactly
   // where one gets hand-written.
   {
     id: 'physical CSS longhand',
@@ -106,7 +106,7 @@ function main() {
   try {
     if (!statSync(ROOT).isDirectory()) throw new Error('not a directory');
   } catch {
-    console.log(`check-logical-props: "${ROOT}" not found — nothing to check.`);
+    console.log(`check-logical-props: "${ROOT}" not found - nothing to check.`);
     process.exit(0);
   }
 
@@ -134,7 +134,7 @@ function main() {
   }
 
   if (problems.length > 0) {
-    console.error('\nBANNED PHYSICAL-DIRECTION VALUES — the site will not mirror into Arabic.\n');
+    console.error('\nBANNED PHYSICAL-DIRECTION VALUES - the site will not mirror into Arabic.\n');
     for (const problem of problems) console.error(`  ${problem}`);
     console.error(
       `\n${problems.length} problem(s) in ${files.length} file(s).` +

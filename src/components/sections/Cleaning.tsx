@@ -2,7 +2,7 @@
  * The cleaning arm. Anchor target for the "Reinigung" nav item.
  *
  * Given its own section rather than only a grid card because it is half the
- * business and reaches a different buyer — but the grid card stays too, so the
+ * business and reaches a different buyer - but the grid card stays too, so the
  * two arms remain structurally equal.
  */
 

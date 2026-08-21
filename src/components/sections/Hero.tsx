@@ -1,5 +1,5 @@
 /**
- * Hero — the split composition the brief asked for: copy on one side, a warm
+ * Hero - the split composition the brief asked for: copy on one side, a warm
  * panel on the other, meeting at the page's optical centre.
  *
  * The split is built with grid fractions rather than absolute positioning, so
@@ -55,26 +55,31 @@ export function Hero({ locale, content }: HeroProps) {
           </ul>
         </div>
 
-        {/* Right panel. No photography yet — the client has not supplied images,
+        {/* Right panel. No photography yet - the client has not supplied images,
             so this is a typographic panel rather than a grey placeholder box. */}
+        {/* data-surface="dark" flips the whole token set for this subtree, so the
+            SAME semantic classes used everywhere else resolve to their dark
+            values here. Do not reach for bg-surface-inverse on this element:
+            the attribute matches the element itself, so "inverse" inverts back
+            to near-white and the panel turns white with white text on it. */}
         <div
           data-surface="dark"
-          className="relative overflow-hidden rounded-2xl bg-surface-inverse p-8 shadow-lg sm:p-10"
+          className="relative overflow-hidden rounded-2xl bg-surface p-8 shadow-lg sm:p-10"
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -top-16 -end-16 size-56 rounded-full bg-brand-gold-500/12"
+            className="pointer-events-none absolute -top-16 -end-16 size-56 rounded-full bg-accent/15"
           />
           <div className="relative flex flex-col gap-6">
-            <span dir="ltr" className="font-heading text-display-sm text-brand-gold-300">
+            <span dir="ltr" className="font-heading text-display-sm text-accent-text">
               Zukunft&nbsp;Service
             </span>
-            <p className="text-lead text-brand-green-50/90">{content.meta.slogan}</p>
-            <ul className="flex flex-col gap-3 border-t border-brand-green-50/15 pt-6">
+            <p className="text-lead text-text-secondary">{content.meta.slogan}</p>
+            <ul className="flex flex-col gap-3 border-t border-border-subtle pt-6">
               {content.pillars.map((pillar) => (
                 <li key={pillar.id} className="flex items-start gap-3">
-                  <Icon name={pillar.icon} size={20} className="mt-0.5 text-brand-gold-300" />
-                  <span className="text-body font-semibold text-brand-green-50">
+                  <Icon name={pillar.icon} size={20} className="mt-0.5 text-accent-text" />
+                  <span className="text-body font-semibold text-text-heading">
                     {pillar.title}
                   </span>
                 </li>

@@ -20,7 +20,7 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const { meta } = getSiteContent(locale);
-  // `absolute` opts out of the layout's "%s — Zukunft Service" template, which
+  // `absolute` opts out of the layout's "%s - Zukunft Service" template, which
   // would otherwise duplicate the brand name already inside homeTitle.
   return { title: { absolute: meta.homeTitle }, description: meta.homeDescription };
 }

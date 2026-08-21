@@ -1,7 +1,7 @@
 'use client';
 
 /**
- * The contact form — the one conversion path on the site.
+ * The contact form - the one conversion path on the site.
  *
  * On failure the user is never left stranded: the error state repeats the
  * WhatsApp and email routes, because a form that cannot send must not become a
@@ -306,9 +306,12 @@ export function ContactForm({ locale, content }: { locale: Locale; content: Site
         </span>
       </label>
 
-      {/* Honeypot. Positioned off-screen rather than display:none, because a
-          display:none input is skipped by many bots and by autofill alike. */}
-      <div aria-hidden="true" className="absolute -start-[9999px] h-0 w-0 overflow-hidden">
+      {/* Honeypot. `sr-only` clips it to a 1px box instead of parking it at
+          -9999px: a far-offset element still extends the scrollable area, and
+          under RTL `start` resolves to `right`, so the old version pushed the
+          document 9999px wide and gave the Arabic pages a horizontal scrollbar.
+          Still not display:none, which many bots skip. */}
+      <div aria-hidden="true" className="sr-only">
         <label htmlFor="field-company">{strings.honeypot.label}</label>
         <input
           id="field-company"

@@ -10,7 +10,7 @@
  *    autocomplete="off" plus tabindex={-1}. Bots fill it; humans never see it.
  *  - `renderedAt` is a timing trap. A submit under MIN_FILL_MS did not involve
  *    a human reading the form.
- * Neither replaces server-side checks — both are advisory signals the backend
+ * Neither replaces server-side checks - both are advisory signals the backend
  * should re-verify.
  */
 
@@ -49,7 +49,7 @@ export function createContactSchema(strings: FormValidationStrings) {
         .or(z.literal('')),
       whatsappOptIn: z.boolean(),
       preferredTime: z.enum(PREFERRED_TIME_VALUES),
-      /** Honeypot — must stay empty. */
+      /** Honeypot - must stay empty. */
       company: z.string().max(0),
       renderedAt: z.number(),
     })

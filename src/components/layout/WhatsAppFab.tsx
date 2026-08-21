@@ -6,7 +6,7 @@
  * So the channel they already trust follows them down the page.
  *
  * COLOUR: WhatsApp's brand #25d366 is 1.98:1 on white and fails WCAG outright.
- * This uses WhatsApp's own darker #128c7e (4.14:1) — still unmistakably
+ * This uses WhatsApp's own darker #128c7e (4.14:1) - still unmistakably
  * WhatsApp, actually readable.
  *
  * POSITION is logical (`end-`), so it sits bottom-right in German and

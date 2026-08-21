@@ -14,11 +14,11 @@
  *   "message":       string,   // 10..4000 chars, already trimmed
  *   "name":          string,   // >= 2 chars
  *   "email":         string,   // syntactically valid
- *   "phone":         string,   // may be "" — required only if whatsappOptIn
+ *   "phone":         string,   // may be "" - required only if whatsappOptIn
  *   "whatsappOptIn": boolean,
  *   "preferredTime": "morning" | "afternoon" | "any",
  *   "locale":        "de" | "ar",   // reply in this language
- *   "company":       string,   // HONEYPOT — must be "". Non-empty ⇒ drop it.
+ *   "company":       string,   // HONEYPOT - must be "". Non-empty ⇒ drop it.
  *   "elapsedMs":     number    // ms the form was open. < 3000 ⇒ treat as bot.
  * }
  *
@@ -32,8 +32,8 @@
  * every field server-side. Rate-limit by IP. Re-check the honeypot and
  * elapsedMs. Send to CONTACT_RECIPIENT_EMAIL with the user's address in
  * Reply-To, never in From, or SPF/DKIM will fail and the mail will be spam-
- * filtered. Under DSGVO Art. 13 the enquiry is Art. 6(1)(b)/(f) processing —
- * lawful without consent — but it still needs a retention period.
+ * filtered. Under DSGVO Art. 13 the enquiry is Art. 6(1)(b)/(f) processing -
+ * lawful without consent - but it still needs a retention period.
  */
 
 import type { Locale } from './locale';

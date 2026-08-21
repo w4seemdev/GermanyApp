@@ -1,17 +1,17 @@
 /**
- * ARABIC SITE CONTENT — chrome + home page + form + a11y strings.
+ * ARABIC SITE CONTENT - chrome + home page + form + a11y strings.
  *
  * This is NOT a translation of the German file. It is the Arabic body on the
  * shared spine: the same required keys (TypeScript enforces that via
  * `: SiteContent`), but wording written for an Arabic-speaking reader living in
  * Germany rather than transliterated German.
  *
- * FORBIDDEN COPY — the hedging is load-bearing, exactly as in the German file.
+ * FORBIDDEN COPY - the hedging is load-bearing, exactly as in the German file.
  * Never promise an outcome (نضمن / مضمون / نحصل لك على), never claim regulated
  * advice (استشارة قانونية / ضريبية / تأمينية). Always: نرافقك · نساعدك في ·
  * نجهز · ننظم · نشرح. The authorities decide; we prepare.
  *
- * TYPOGRAPHY: never letter-space Arabic and never uppercase it — both break
+ * TYPOGRAPHY: never letter-space Arabic and never uppercase it - both break
  * cursive joining. The `ar` variant in globals.css already forces this off.
  *
  * LATIN RUNS: the brand name Zukunft Service, the address and the phone number
@@ -21,7 +21,7 @@
 import type { SiteContent } from '@/types/content';
 
 /** Defined once so the hedge can never drift between the scope section and the
- *  contact form — the two places a regulator would actually look. */
+ *  contact form - the two places a regulator would actually look. */
 const HEDGE_NOTICE =
   'نقدم دعمًا تنظيميًا ولغويًا. نحن لا نقدم استشارات قانونية أو ضريبية أو تأمينية. '
   + 'وعندما تتطلب حالتك استشارة متخصصة، نحيلك إلى الجهات والمكاتب المختصة.';
@@ -30,7 +30,7 @@ export const arSite: SiteContent = {
   meta: {
     siteName: 'Zukunft Service',
     slogan: 'شريكك في معاملات الدوائر الرسمية والوثائق والحياة اليومية في ألمانيا',
-    homeTitle: 'Zukunft Service دورتموند — معاملات ووثائق وخدمات تنظيف',
+    homeTitle: 'Zukunft Service دورتموند: معاملات ووثائق وخدمات تنظيف',
     homeDescription:
       'مكتب Zukunft Service في دورتموند يرافقك في معاملات التجنيس والدوائر الرسمية والترجمات والدراسة والتأشيرات، ويتولى خدمات التنظيف. نتحدث العربية والألمانية.',
     localeLabel: 'العربية',
@@ -49,19 +49,38 @@ export const arSite: SiteContent = {
       },
       { id: 'contact', label: 'تواصل معنا', target: { kind: 'route', routeId: 'contact' } },
     ],
+    // Mirrors the German footer: six service links, same order, same targets.
     footer: [
-      { id: 'services', label: 'كل الخدمات', target: { kind: 'route', routeId: 'services' } },
       {
-        id: 'why',
-        label: 'لماذا Zukunft Service',
-        target: { kind: 'anchor', hash: '#warum-wir' },
+        id: 'authorities',
+        label: 'التجنيس والدوائر الرسمية',
+        target: { kind: 'service', serviceId: 'authorities' },
       },
       {
-        id: 'scope',
-        label: 'ما نقوم به وما لا نقوم به',
-        target: { kind: 'anchor', hash: '#leistungsumfang' },
+        id: 'marriage-translation',
+        label: 'الزواج والترجمات',
+        target: { kind: 'service', serviceId: 'marriage-translation' },
       },
-      { id: 'contact', label: 'اطلب المساعدة', target: { kind: 'route', routeId: 'contact' } },
+      {
+        id: 'study-visa',
+        label: 'الدراسة والتأشيرات',
+        target: { kind: 'service', serviceId: 'study-visa' },
+      },
+      {
+        id: 'finance',
+        label: 'الشؤون المالية والادخار',
+        target: { kind: 'service', serviceId: 'finance' },
+      },
+      {
+        id: 'real-estate',
+        label: 'العقارات والاستثمار',
+        target: { kind: 'service', serviceId: 'real-estate' },
+      },
+      {
+        id: 'cleaning',
+        label: 'خدمة التنظيف',
+        target: { kind: 'service', serviceId: 'cleaning' },
+      },
     ],
     legal: [
       // "Impressum" stays the German word in both locales: case law has rejected
@@ -75,10 +94,10 @@ export const arSite: SiteContent = {
     eyebrow: 'خدمات مكتبية وخدمات تنظيف في دورتموند',
     headline: 'لا تعرف من أين تبدأ؟ نحن نعرف.',
     lead:
-      'التجنيس، ورسائل الدوائر الرسمية، والترجمات، والدراسة، والتأشيرات — إضافة إلى خدمة تنظيف بيتك أو مكتبك. في Zukunft Service تجد ذلك كله في مكان واحد، بالعربية والألمانية.',
+      'التجنيس، ورسائل الدوائر الرسمية، والترجمات، والدراسة، والتأشيرات، إضافة إلى خدمة تنظيف بيتك أو مكتبك. في Zukunft Service تجد ذلك كله في مكان واحد، بالعربية والألمانية.',
     primaryCta: {
       label: 'اشرح لنا حالتك',
-      hint: 'من دون التزام ومن دون رسوم — نرد عليك في أول يوم عمل.',
+      hint: 'من دون التزام ومن دون رسوم. نرد عليك في أول يوم عمل.',
     },
     secondaryCta: { label: 'تصفح الخدمات' },
     trust: [
@@ -96,7 +115,7 @@ export const arSite: SiteContent = {
       icon: 'FileText',
       title: 'الخدمات المكتبية',
       body:
-        'الطلبات والاستمارات والمواعيد والمراسلات — من التجنيس إلى الترجمات وصولًا إلى الدراسة والتأشيرات. نرتب لك ما يجب أن يجتمع معًا، ونرافقك خطوة بخطوة.',
+        'الطلبات والاستمارات والمواعيد والمراسلات، من التجنيس إلى الترجمات وصولًا إلى الدراسة والتأشيرات. نرتب لك ما يجب أن يجتمع معًا، ونرافقك خطوة بخطوة.',
       linkLabel: 'تصفح الخدمات المكتبية',
     },
     {
@@ -105,7 +124,7 @@ export const arSite: SiteContent = {
       icon: 'SprayCan',
       title: 'خدمة التنظيف',
       body:
-        'تنظيف دوري، وتنظيف شامل، وتنظيف بعد الانتقال أو بعد أعمال الترميم — للبيوت والمكاتب والعيادات في دورتموند وما حولها.',
+        'تنظيف دوري، وتنظيف شامل، وتنظيف بعد الانتقال أو بعد أعمال الترميم، للبيوت والمكاتب والعيادات في دورتموند وما حولها.',
       linkLabel: 'تصفح خدمة التنظيف',
     },
   ],
@@ -130,14 +149,14 @@ export const arSite: SiteContent = {
         index: '02',
         title: 'نرتب لك الأمور ونشرحها',
         body:
-          'نوضح لك ما هو المطلوب، وأي جهة هي المختصة، وبأي ترتيب يفضل أن تسير الأمور — بلغة مفهومة بعيدًا عن تعقيد اللغة الرسمية.',
+          'نوضح لك ما هو المطلوب، وأي جهة هي المختصة، وبأي ترتيب يفضل أن تسير الأمور، بلغة مفهومة بعيدًا عن تعقيد اللغة الرسمية.',
       },
       {
         id: 'do',
         index: '03',
         title: 'نرافقك حتى التنفيذ',
         body:
-          'تعبئة الاستمارات، وتنسيق المواعيد، وتجهيز الأوراق، وتنظيم الترجمات — نبقى معك إلى أن تنجز المعاملة.',
+          'تعبئة الاستمارات، وتنسيق المواعيد، وتجهيز الأوراق، وتنظيم الترجمات. نبقى معك إلى أن تنجز المعاملة.',
       },
     ],
   },
@@ -158,7 +177,7 @@ export const arSite: SiteContent = {
       eyebrow: 'لماذا نحن',
       title: 'لماذا يقصد الناس Zukunft Service',
       lead:
-        'لأن معاملات الدوائر الرسمية بلغة غير لغتك مرهقة — ولأن وجود من يصغي إليك يصنع فرقًا حقيقيًا.',
+        'لأن معاملات الدوائر الرسمية بلغة غير لغتك مرهقة، ولأن وجود من يصغي إليك يصنع فرقًا حقيقيًا.',
     },
     points: [
       {
@@ -178,14 +197,14 @@ export const arSite: SiteContent = {
         id: 'multilingual',
         icon: 'MessagesSquare',
         title: 'بالعربية والألمانية',
-        body: 'نشرح لك بالعربية ما يقوله الخطاب بالألمانية — ونصوغ بالألمانية ما تقوله لنا بالعربية.',
+        body: 'نشرح لك بالعربية ما يقوله الخطاب بالألمانية، ونصوغ بالألمانية ما تقوله لنا بالعربية.',
       },
       {
         id: 'network',
         icon: 'Network',
         title: 'شبكة علاقات راسخة',
         body:
-          'في المسائل التي تحتاج إلى مختصين، نعرف الجهات المناسبة — مترجمين ومكاتب محاماة وجهات استشارية — ونوصلك بها.',
+          'في المسائل التي تحتاج إلى مختصين، نعرف الجهات المناسبة: مترجمين ومكاتب محاماة وجهات استشارية، ونوصلك بها.',
       },
       {
         id: 'tailored',
@@ -250,14 +269,14 @@ export const arSite: SiteContent = {
       eyebrow: 'تواصل معنا',
       title: 'احك لنا ما الموضوع',
       lead:
-        'بضع جمل تكفي. لا تحتاج إلى تحضير شيء ولا إلى إرسال أوراق — نخبرك بالخطوة المناسبة التالية.',
+        'بضع جمل تكفي. لا تحتاج إلى تحضير شيء ولا إلى إرسال أوراق. نخبرك بالخطوة المناسبة التالية.',
     },
     quickContact: {
       whatsapp: 'راسلنا على واتساب',
       call: 'اتصل بنا الآن',
       email: 'أرسل بريدًا إلكترونيًا',
     },
-    responseNote: 'خارج أوقات الدوام: راسلنا على أي حال — نرد عليك في أول يوم عمل.',
+    responseNote: 'خارج أوقات الدوام: راسلنا على أي حال، ونرد عليك في أول يوم عمل.',
   },
 
   info: {
@@ -270,7 +289,7 @@ export const arSite: SiteContent = {
   },
 
   footer: {
-    slogan: 'خدمات مكتبية وخدمات تنظيف في دورتموند — بالعربية والألمانية.',
+    slogan: 'خدمات مكتبية وخدمات تنظيف في دورتموند، بالعربية والألمانية.',
     navTitle: 'الصفحات',
     legalTitle: 'معلومات قانونية',
     copyright: '© {year} Zukunft Service. جميع الحقوق محفوظة.',
@@ -294,7 +313,7 @@ export const arSite: SiteContent = {
     },
     message: {
       label: 'اشرح لنا طلبك',
-      placeholder: 'صف وضعك باختصار — بضع جمل تكفي تمامًا.',
+      placeholder: 'صف وضعك باختصار. بضع جمل تكفي تمامًا.',
       hint: 'من فضلك لا ترسل نسخًا من الهوية أو الوثائق في هذه المرحلة.',
     },
     name: { label: 'الاسم', placeholder: 'الاسم الأول واسم العائلة' },
@@ -306,7 +325,7 @@ export const arSite: SiteContent = {
     phone: {
       label: 'رقم الهاتف',
       placeholder: '+49 …',
-      hint: 'اختياري — إلا إذا رغبت بالرد عبر واتساب.',
+      hint: 'اختياري، إلا إذا رغبت بالرد عبر واتساب.',
     },
     whatsappOptIn: {
       label: 'لا مانع لدي من الرد عبر واتساب',
@@ -323,7 +342,7 @@ export const arSite: SiteContent = {
     honeypot: { label: 'يرجى ترك هذا الحقل فارغًا' },
     submit: 'إرسال الطلب',
     submitting: 'جار الإرسال …',
-    successTitle: 'شكرًا لك — وصلنا طلبك.',
+    successTitle: 'شكرًا لك، وصلنا طلبك.',
     successBody:
       'استلمنا رسالتك وسنتواصل معك في أول يوم عمل. وإذا كان الأمر عاجلًا، يمكنك الاتصال بنا أو مراسلتنا على واتساب.',
     errorTitle: 'تعذر إرسال الطلب.',

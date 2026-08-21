@@ -8,7 +8,7 @@
  * middle-clicks into a new tab, and is crawlable.
  *
  * FOUR RULES THIS COMPONENT EXISTS TO KEEP
- *  1. The label is the TARGET language written in ITS OWN script — "العربية" on
+ *  1. The label is the TARGET language written in ITS OWN script - "العربية" on
  *     the German page, "Deutsch" on the Arabic one. A user who reads no German
  *     must still recognise their language. Never "Arabisch", never a flag: a
  *     flag names a country, not a language, and Arabic belongs to many.

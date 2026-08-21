@@ -1,5 +1,5 @@
 /**
- * Confirmed business data — the single source of truth for the footer, the info
+ * Confirmed business data - the single source of truth for the footer, the info
  * strip, the contact page, the LocalBusiness JSON-LD and the Impressum shell.
  *
  * Client-confirmed 20 Aug 2026 (docs/PLAN.md §2):
@@ -15,7 +15,7 @@
  * mandatory § 5 DDG Impressum field: a missing or defective Impressum is
  * actionable under § 3a UWG and the first letter can cost more than the whole
  * project fee, so the release gate must fail the production build while any
- * sentinel survives — see `isPlaceholder`.
+ * sentinel survives - see `isPlaceholder`.
  */
 
 import type { NapData } from '@/types/content';
@@ -30,9 +30,9 @@ export function isPlaceholder(value: string): boolean {
 
 export const NAP = {
   // ── Still unknown. Blocks launch, not the build of the UI. ───────────────
-  legalName: '«Vollständiger Firmenname inkl. Rechtsform — vom Kunden zu bestätigen»',
-  legalForm: '«Rechtsform: Einzelunternehmen / GbR / UG / GmbH — vom Kunden zu bestätigen»',
-  managingDirector: '«Inhaber / Vertretungsberechtigte Person — vom Kunden zu bestätigen»',
+  legalName: '«Vollständiger Firmenname inkl. Rechtsform, vom Kunden zu bestätigen»',
+  legalForm: '«Rechtsform: Einzelunternehmen / GbR / UG / GmbH, vom Kunden zu bestätigen»',
+  managingDirector: '«Inhaber / Vertretungsberechtigte Person, vom Kunden zu bestätigen»',
   vatId: null,
   registerCourt: null,
   registerNumber: null,
@@ -52,7 +52,7 @@ export const NAP = {
   whatsappE164: '+491773825632',
   email: 'info@zukunftservice.de',
 
-  // Link out only — never an iframe. An embedded map transmits the visitor's
+  // Link out only - never an iframe. An embedded map transmits the visitor's
   // IP to Google on page load, which triggers consent and therefore a banner.
   mapsUrl: 'https://maps.google.com/?q=Ruhrallee+55+44139+Dortmund',
 

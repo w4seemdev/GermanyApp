@@ -8,7 +8,7 @@
  * sentinels in NAP. A missing or defective Impressum is actionable under
  * § 3a UWG and the first warning letter typically costs more than this whole
  * project, so the gap renders as a visible banner rather than being quietly
- * omitted — and `hasUnresolvedPlaceholders()` exists to fail a release check.
+ * omitted - and `hasUnresolvedPlaceholders()` exists to fail a release check.
  *
  * This is a structural shell, not legal advice. The client should have the
  * final wording reviewed before launch.
@@ -71,7 +71,7 @@ export const LEGAL: Record<Locale, LegalStrings> = {
     controllerHeading: 'Verantwortlicher',
     formDataHeading: 'Daten aus dem Kontaktformular',
     formDataBody:
-      'Wenn Sie uns über das Kontaktformular schreiben, verarbeiten wir die von Ihnen angegebenen Daten — Anliegen, Nachricht, Name, E-Mail-Adresse sowie, sofern angegeben, Telefonnummer und bevorzugte Erreichbarkeit — ausschließlich, um Ihre Anfrage zu bearbeiten und zu beantworten.',
+      'Wenn Sie uns über das Kontaktformular schreiben, verarbeiten wir die von Ihnen angegebenen Daten (Anliegen, Nachricht, Name, E-Mail-Adresse sowie, sofern angegeben, Telefonnummer und bevorzugte Erreichbarkeit) ausschließlich, um Ihre Anfrage zu bearbeiten und zu beantworten.',
     legalBasisHeading: 'Rechtsgrundlage',
     legalBasisBody:
       'Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf den Abschluss eines Vertrags gerichtet ist, im Übrigen auf Grundlage unseres berechtigten Interesses an der Beantwortung von Anfragen nach Art. 6 Abs. 1 lit. f DSGVO.',
@@ -122,7 +122,7 @@ export const LEGAL: Record<Locale, LegalStrings> = {
     controllerHeading: 'الجهة المسؤولة',
     formDataHeading: 'البيانات الواردة عبر نموذج التواصل',
     formDataBody:
-      'عندما تراسلنا عبر نموذج التواصل، نعالج البيانات التي تدخلها — موضوع الطلب والرسالة والاسم والبريد الإلكتروني، وكذلك رقم الهاتف ووقت التواصل المفضل إن ذكرتهما — لغرض معالجة طلبك والرد عليه فقط.',
+      'عندما تراسلنا عبر نموذج التواصل، نعالج البيانات التي تدخلها (موضوع الطلب والرسالة والاسم والبريد الإلكتروني، وكذلك رقم الهاتف ووقت التواصل المفضل إن ذكرتهما) لغرض معالجة طلبك والرد عليه فقط.',
     legalBasisHeading: 'الأساس القانوني',
     legalBasisBody:
       'تتم المعالجة استنادًا إلى المادة 6 فقرة 1 (ب) من DSGVO متى كان طلبك متعلقًا بإبرام عقد، وفيما عدا ذلك استنادًا إلى مصلحتنا المشروعة في الرد على الاستفسارات وفق المادة 6 فقرة 1 (و).',

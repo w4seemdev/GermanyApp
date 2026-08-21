@@ -21,7 +21,7 @@ export const SERVICE_META: Record<ServiceId, ServiceMeta> = {
     id: 'authorities',
     order: 1,
     slug: 'einbuergerung-behoerden-dokumente',
-    // A stamped document — the single most recognisable object in this world.
+    // A stamped document - the single most recognisable object in this world.
     icon: 'Stamp',
     arm: 'office',
     // Naturalisation and authority work sits near the RDG boundary.
@@ -31,7 +31,7 @@ export const SERVICE_META: Record<ServiceId, ServiceMeta> = {
     id: 'marriage-translation',
     order: 2,
     slug: 'ehe-uebersetzungen-dokumente',
-    // Two scripts — mirrors the whole site's bilingual premise.
+    // Two scripts - mirrors the whole site's bilingual premise.
     icon: 'Languages',
     arm: 'office',
     legalSensitivity: 'medium',
@@ -62,7 +62,7 @@ export const SERVICE_META: Record<ServiceId, ServiceMeta> = {
     slug: 'immobilien-investitionen',
     icon: 'Building2',
     arm: 'office',
-    // § 34c / § 34i GewO — real estate and loan brokerage, incl. Dubai.
+    // § 34c / § 34i GewO - real estate and loan brokerage, incl. Dubai.
     legalSensitivity: 'high',
   },
   cleaning: {
@@ -71,7 +71,7 @@ export const SERVICE_META: Record<ServiceId, ServiceMeta> = {
     slug: 'reinigungsservice',
     icon: 'SprayCan',
     // The second arm of the business, and card 06 in the grid like every other
-    // service — visual emphasis must never become a structural special case.
+    // service - visual emphasis must never become a structural special case.
     arm: 'cleaning',
     legalSensitivity: 'low',
   },
@@ -95,12 +95,12 @@ export function serviceSlug(id: ServiceId): string {
   return SERVICE_META[id].slug;
 }
 
-/** `undefined` for an unknown slug — the route should then call `notFound()`. */
+/** `undefined` for an unknown slug - the route should then call `notFound()`. */
 export function serviceIdFromSlug(slug: string): ServiceId | undefined {
   return SERVICE_ID_BY_SLUG[slug];
 }
 
-/** The other services, in order — for the "sibling services" row. */
+/** The other services, in order - for the "sibling services" row. */
 export function siblingServices(id: ServiceId, count = 3): readonly ServiceMeta[] {
   return SERVICES_IN_ORDER.filter((meta) => meta.id !== id).slice(0, count);
 }

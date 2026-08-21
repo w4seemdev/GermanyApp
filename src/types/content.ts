@@ -1,5 +1,5 @@
 /**
- * ZUKUNFT SERVICE — the content model.
+ * ZUKUNFT SERVICE - the content model.
  *
  * Spec: docs/research/01-content-and-ia.md §3 · docs/research/03-frontend-architecture.md §5.1
  *
@@ -7,10 +7,10 @@
  * `tsc --noEmit` the translation-completeness check: a missing Arabic key is a
  * build failure, not a `[missing key]` string in production.
  *
- * THE SPINE / BODY SPLIT is the central idea. The spine — service ids, slugs,
- * icons, ordering, every required key of `SiteContent` — is locale-invariant or
- * `Record<Locale, …>`, so TypeScript errors on any omission. The body —
- * `blocks[]`, `items[]` — may diverge freely between German and Arabic, because
+ * THE SPINE / BODY SPLIT is the central idea. The spine - service ids, slugs,
+ * icons, ordering, every required key of `SiteContent` - is locale-invariant or
+ * `Record<Locale, …>`, so TypeScript errors on any omission. The body -
+ * `blocks[]`, `items[]` - may diverge freely between German and Arabic, because
  * the client's two source PDFs genuinely differ in structure, not just wording.
  */
 
@@ -32,7 +32,7 @@ export type LocalizedString = Record<Locale, string>;
 export type ContentStatus = 'final' | 'draft-needs-client-approval';
 
 /* ════════════════════════════════════════════════════════════════════════════
-   SERVICES — the six verticals
+   SERVICES - the six verticals
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const SERVICE_IDS = [
@@ -46,7 +46,7 @@ export const SERVICE_IDS = [
 
 export type ServiceId = (typeof SERVICE_IDS)[number];
 
-/** The contact form's "Worum geht es?" select — the six services plus an
+/** The contact form's "Worum geht es?" select - the six services plus an
  *  escape hatch, because the brand promise is "you don't know where to start". */
 export type ServiceCategory = ServiceId | 'other';
 
@@ -94,7 +94,7 @@ export interface ImageRef {
 /**
  * Locale-invariant service spine. Because the slug lives here and not in the
  * per-locale content, it is structurally impossible for the German and Arabic
- * sites to have different URLs, icons or service ordering — which is what makes
+ * sites to have different URLs, icons or service ordering - which is what makes
  * the language switch guaranteed to land on the equivalent page.
  */
 export interface ServiceMeta {
@@ -111,7 +111,7 @@ export interface ServiceMeta {
 /* ════════════════════════════════════════════════════════════════════════════
    SERVICE BLOCKS
    The six services have genuinely different internal shapes. Do NOT model
-   "flat list service" and "sub-block service" as two types — the same service
+   "flat list service" and "sub-block service" as two types - the same service
    is flat in Arabic and sub-blocked in German, which would make one service two
    types in two languages. Instead every service is ServiceBlock[]: a flat list
    is one untitled list block, sub-blocks are several titled ones.
@@ -180,7 +180,7 @@ export interface ServiceContent {
   id: ServiceId;
   /** "Leistung 03" · "الخدمة 03" */
   eyebrow: string;
-  /** <h1>. Plain domain name — the intro paragraph carries the benefit. */
+  /** <h1>. Plain domain name - the intro paragraph carries the benefit. */
   title: string;
   cardTitle: string;
   cardDescription: string;
@@ -251,12 +251,12 @@ export interface NavContent {
   primary: readonly NavItem[];
   footer: readonly NavItem[];
   /** Impressum · Datenschutz. The Impressum label stays the German word in
-   *  both locales — case law has rejected "Kontakt", "Legal" and "Info". */
+   *  both locales - case law has rejected "Kontakt", "Legal" and "Info". */
   legal: readonly NavItem[];
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   NAP — name, address, phone. Locale-invariant.
+   NAP - name, address, phone. Locale-invariant.
    One shape serves the footer, the info strip, the contact page, the
    LocalBusiness JSON-LD and the Impressum shell.
    ═══════════════════════════════════════════════════════════════════════════ */
@@ -285,7 +285,7 @@ export interface NapData {
   /** Impressum-exact, including legal form. Carries a «…» sentinel until the
    *  client confirms it; the sentinel fails a production build. */
   legalName: string;
-  /** Never translated, never transliterated — Latin in Arabic copy too. */
+  /** Never translated, never transliterated - Latin in Arabic copy too. */
   tradeName: 'Zukunft Service';
   legalForm: string;
   managingDirector: string;
@@ -296,11 +296,11 @@ export interface NapData {
   region: string;
   country: 'DE';
 
-  /** '+491773825632' — for tel: hrefs and JSON-LD. */
+  /** '+491773825632' - for tel: hrefs and JSON-LD. */
   phoneE164: `+${string}`;
-  /** '+49 177 3825632' — for display. ALWAYS inside <bdi dir="ltr">. */
+  /** '+49 177 3825632' - for display. ALWAYS inside <bdi dir="ltr">. */
   phoneDisplay: string;
-  /** '491773825632' — digits only, for wa.me. */
+  /** '491773825632' - digits only, for wa.me. */
   phoneDigits: string;
   whatsappE164: `+${string}`;
   email: string;
@@ -319,12 +319,12 @@ export interface NapData {
 }
 
 /* ════════════════════════════════════════════════════════════════════════════
-   SITE CONTENT — everything on the home page and in the chrome, per locale
+   SITE CONTENT - everything on the home page and in the chrome, per locale
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export interface Cta {
   label: string;
-  /** "Unverbindlich und kostenlos anfragen" — microcopy under the CTA, never
+  /** "Unverbindlich und kostenlos anfragen" - microcopy under the CTA, never
    *  relegated to a footnote. */
   hint?: string;
 }
@@ -369,7 +369,7 @@ export interface HeroContent {
 /** The two arms of the business: Büroservice / Reinigungsservice. */
 export interface PillarContent {
   id: ServiceArm;
-  /** '01' / '02' — rendered as a numeral, never mirrored. */
+  /** '01' / '02' - rendered as a numeral, never mirrored. */
   index: string;
   icon: IconName;
   title: string;
@@ -393,7 +393,7 @@ export interface ProcessContent {
 
 export interface ServicesGridContent {
   heading: SectionHeading;
-  /** "Mehr zu dieser Leistung →" — the arrow flips per locale, so it is
+  /** "Mehr zu dieser Leistung →" - the arrow flips per locale, so it is
    *  content, not decoration, and lives here rather than in CSS. */
   detailLabel: string;
   note?: string;
@@ -431,7 +431,7 @@ export interface QuickContactStrings {
 export interface ContactContent {
   heading: SectionHeading;
   quickContact: QuickContactStrings;
-  /** "Außerhalb der Öffnungszeiten: schreiben Sie uns — wir melden uns am
+  /** "Außerhalb der Öffnungszeiten: schreiben Sie uns - wir melden uns am
    *  nächsten Werktag." Turns a closed office into a captured lead. */
   responseNote: string;
 }
@@ -484,7 +484,7 @@ export interface FormValidationStrings {
 export interface ContactFormStrings {
   title: string;
   lead: string;
-  /** Field 1, deliberately not "Name" — asking a user worried about their
+  /** Field 1, deliberately not "Name" - asking a user worried about their
    *  residency status to identify themselves first is the highest-friction
    *  possible opening. Includes a 7th "Sonstiges / not sure" option. */
   service: SelectFieldStrings;

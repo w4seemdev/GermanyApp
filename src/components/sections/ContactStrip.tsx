@@ -2,7 +2,7 @@
  * Quick-contact row plus the NAP info strip.
  *
  * WhatsApp brand green #25d366 is 1.98:1 on white and fails WCAG outright, so
- * the button uses WhatsApp's own darker #128c7e (4.14:1) — recognisably
+ * the button uses WhatsApp's own darker #128c7e (4.14:1) - recognisably
  * WhatsApp, actually readable.
  *
  * The wa.me link is prefilled, so the user never faces an empty message box and

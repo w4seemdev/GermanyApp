@@ -1,12 +1,12 @@
 /**
- * GERMAN SITE CONTENT — chrome + home page + form + a11y strings.
+ * GERMAN SITE CONTENT - chrome + home page + form + a11y strings.
  *
  * Source: docs/research/00-source-brief.md §2/§3 (the client's PDFs) and
  * docs/research/01-content-and-ia.md §2/§6. Everything here is either the
  * client's own wording or a process description built from it.
  *
  * ─────────────────────────────────────────────────────────────────────────────
- * FORBIDDEN COPY — do not "improve" these strings. The hedging is load-bearing.
+ * FORBIDDEN COPY - do not "improve" these strings. The hedging is load-bearing.
  * Never write: „wir beraten", „rechtliche Beratung", „Steuerberatung",
  * „Schuldnerberatung", „garantiert", „100 %", „wir besorgen Ihnen ein Visum",
  * „wir erledigen Ihre Einbürgerung", „beglaubigte Übersetzung" as our own
@@ -47,9 +47,13 @@ export const deSite: SiteContent = {
 
   nav: {
     primary: [
-      { id: 'home', label: 'Start', target: { kind: 'route', routeId: 'home' } },
-      { id: 'services', label: 'Leistungen', target: { kind: 'anchor', hash: '#leistungen' } },
-      { id: 'about', label: 'Über uns', target: { kind: 'anchor', hash: '#ueber-uns' } },
+      // Every target below points at a section id that actually exists. The
+      // previous '#ueber-uns' anchor had no matching section and scrolled
+      // nowhere. Structure is kept identical to the Arabic nav so the language
+      // switch does not change the menu under the reader.
+      { id: 'services', label: 'Leistungen', target: { kind: 'route', routeId: 'services' } },
+      { id: 'why', label: 'Warum wir', target: { kind: 'anchor', hash: '#warum-wir' } },
+      { id: 'cleaning', label: 'Reinigung', target: { kind: 'anchor', hash: '#reinigungsservice' } },
       { id: 'contact', label: 'Kontakt', target: { kind: 'route', routeId: 'contact' } },
     ],
     footer: [
@@ -84,7 +88,7 @@ export const deSite: SiteContent = {
         target: { kind: 'service', serviceId: 'cleaning' },
       },
     ],
-    // The Impressum label stays the German word in both locales — case law has
+    // The Impressum label stays the German word in both locales - case law has
     // rejected "Kontakt", "Legal" and "Info" as substitutes.
     legal: [
       { id: 'imprint', label: 'Impressum', target: { kind: 'route', routeId: 'imprint' } },

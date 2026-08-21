@@ -1,7 +1,7 @@
 /**
  * The two arms of the business, stated plainly.
  *
- * The numerals 01/02 are content, not decoration — they come from the content
+ * The numerals 01/02 are content, not decoration - they come from the content
  * file so they never mirror or renumber under RTL.
  */
 

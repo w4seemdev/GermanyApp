@@ -5,7 +5,7 @@ import { LOCALES } from '@/lib/locale';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://zukunftservice.de';
 
-/** German segments, used in both locales — see src/lib/routes.ts. */
+/** German segments, used in both locales - see src/lib/routes.ts. */
 const STATIC_SEGMENTS = ['', 'leistungen', 'kontakt'];
 
 /**

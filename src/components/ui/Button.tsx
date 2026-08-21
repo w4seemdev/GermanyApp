@@ -1,7 +1,7 @@
 /**
  * Button and ButtonLink.
  *
- * CONTRAST RULES BAKED IN — see globals.css header:
+ * CONTRAST RULES BAKED IN - see globals.css header:
  *  - `accent` is gold #c48a16 used as a FILL with near-black text on top.
  *    Gold is never the text colour here.
  *  - hover on the gold fill goes LIGHTER (#d3a32c), not darker, because a
@@ -71,7 +71,7 @@ export interface ButtonLinkProps {
   size?: ButtonSize;
   className?: string;
   children: ReactNode;
-  /** Set for tel:, mailto: and wa.me — those must not be client-routed. */
+  /** Set for tel:, mailto: and wa.me - those must not be client-routed. */
   external?: boolean;
   ariaLabel?: string;
 }

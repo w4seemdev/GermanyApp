@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   ZUKUNFT SERVICE — Tailwind CSS v4 theme
+   ZUKUNFT SERVICE - Tailwind CSS v4 theme
    Spec: docs/research/02-design-system.md §1–§4 · docs/PLAN.md §5
 
    THREE LAWS THIS FILE ENFORCES
@@ -27,7 +27,7 @@
    PRIMITIVES
    ══════════════════════════════════════════════════════════════════════════ */
 @theme {
-  /* ── Green (H ≈ 168°) — the brand spine ───────────────────────────────── */
+  /* ── Green (H ≈ 168°) - the brand spine ───────────────────────────────── */
   --color-brand-green-50: #eef4f2;
   --color-brand-green-100: #d6e4e0;
   --color-brand-green-200: #a9c6be;
@@ -40,24 +40,24 @@
   --color-brand-green-900: #032e27;
   --color-brand-green-950: #021f1a;
 
-  /* ── Gold (H ≈ 40°) — one hue, four functional stops ──────────────────── */
+  /* ── Gold (H ≈ 40°) - one hue, four functional stops ──────────────────── */
   --color-brand-gold-50: #fdf6e3;
   --color-brand-gold-100: #f8e9bf;
   --color-brand-gold-200: #f0d68a;
-  --color-brand-gold-300: #e3bd52; /* gold TEXT on dark green — 6.95:1 */
+  --color-brand-gold-300: #e3bd52; /* gold TEXT on dark green - 6.95:1 */
   --color-brand-gold-400: #d3a32c; /* gold button hover (lighter, not darker) */
-  --color-brand-gold-500: #c48a16; /* ★ brand gold — FILL ONLY, NEVER TEXT */
-  --color-brand-gold-600: #a97612; /* focus ring on light — 3.91:1 */
-  --color-brand-gold-700: #8a6013; /* gold TEXT on light — 5.49:1 */
-  --color-brand-gold-800: #74520f; /* dense/small gold text — 6.59:1 */
+  --color-brand-gold-500: #c48a16; /* ★ brand gold - FILL ONLY, NEVER TEXT */
+  --color-brand-gold-600: #a97612; /* focus ring on light - 3.91:1 */
+  --color-brand-gold-700: #8a6013; /* gold TEXT on light - 5.49:1 */
+  --color-brand-gold-800: #74520f; /* dense/small gold text - 6.59:1 */
   --color-brand-gold-900: #5c400d;
 
-  /* ── Sage (H ≈ 133°) — from the logo leaf ─────────────────────────────── */
+  /* ── Sage (H ≈ 133°) - from the logo leaf ─────────────────────────────── */
   --color-brand-sage-50: #f2f6f2;
   --color-brand-sage-100: #e3ece5;
   --color-brand-sage-200: #c7d9cb;
   --color-brand-sage-300: #a3bfa9;
-  --color-brand-sage-400: #769b7e; /* ★ brand sage — DECORATIVE ONLY (3.11:1) */
+  --color-brand-sage-400: #769b7e; /* ★ brand sage - DECORATIVE ONLY (3.11:1) */
   --color-brand-sage-500: #5d8467; /* large text / UI only (4.23:1) */
   --color-brand-sage-600: #4a6b52; /* text-safe sage (5.97:1) */
   --color-brand-sage-700: #3b5642;
@@ -65,7 +65,7 @@
   /* ── Cream + mint ─────────────────────────────────────────────────────── */
   --color-brand-cream-50: #fffdf9; /* ★ page background */
   --color-brand-cream-100: #f7f0e5; /* ★ cream sections */
-  --color-brand-cream-200: #f4ecdf; /* deeper cream — footer base */
+  --color-brand-cream-200: #f4ecdf; /* deeper cream - footer base */
   --color-brand-mint-100: #e8f0e9; /* cleaning feature card */
 
   /* ── Neutral (warm green-grey) ────────────────────────────────────────── */
@@ -77,7 +77,7 @@
   --color-neutral-250: #dfe7e1;
   --color-neutral-300: #cdd9d5;
   --color-neutral-400: #a7b5b1;
-  --color-neutral-500: #7d8d89; /* 3.38:1 — icons ≥24px only, NEVER text */
+  --color-neutral-500: #7d8d89; /* 3.38:1 - icons ≥24px only, NEVER text */
   --color-neutral-600: #5a6b66; /* the single muted-text token */
   --color-neutral-700: #3f524d;
   --color-neutral-800: #2e433e;
@@ -90,7 +90,7 @@
   --color-danger-bg: #fef7f6;
   --color-success-fg: #05502f;
   --color-success-bg: #eef6f1;
-  --color-whatsapp: #128c7e; /* NOT #25d366 — white glyph on that is 1.98:1 */
+  --color-whatsapp: #128c7e; /* NOT #25d366 - white glyph on that is 1.98:1 */
 
   /* ── FONT FAMILIES ────────────────────────────────────────────────────────
      --font-sans / --font-serif / --font-arabic come from next/font in the
@@ -100,7 +100,7 @@
   --font-heading: var(--font-serif, "IBM Plex Serif"), "IBM Plex Serif", Georgia,
     "Times New Roman", serif;
 
-  /* ── TYPE SCALE — Latin / German is the base ──────────────────────────── */
+  /* ── TYPE SCALE - Latin / German is the base ──────────────────────────── */
   --text-display-xl: clamp(2.75rem, 1.75rem + 4.6vw, 5.25rem); /* 44 → 84 */
   --text-display-xl--line-height: 0.96;
   --text-display-xl--letter-spacing: -0.032em;
@@ -157,16 +157,16 @@
   --text-eyebrow--font-weight: 700;
 
   /* ── RADII ────────────────────────────────────────────────────────────── */
-  --radius-xs: 0.375rem; /*  6 — badges */
-  --radius-sm: 0.5rem; /*  8 — inputs */
-  --radius-md: 0.625rem; /* 10 — buttons */
-  --radius-lg: 0.875rem; /* 14 — service card */
-  --radius-xl: 1.125rem; /* 18 — panels, form card */
-  --radius-2xl: 1.25rem; /* 20 — feature card */
-  --radius-3xl: 1.375rem; /* 22 — modal / sheet */
+  --radius-xs: 0.375rem; /*  6 - badges */
+  --radius-sm: 0.5rem; /*  8 - inputs */
+  --radius-md: 0.625rem; /* 10 - buttons */
+  --radius-lg: 0.875rem; /* 14 - service card */
+  --radius-xl: 1.125rem; /* 18 - panels, form card */
+  --radius-2xl: 1.25rem; /* 20 - feature card */
+  --radius-3xl: 1.375rem; /* 22 - modal / sheet */
   --radius-pill: 9999px;
 
-  /* ── SHADOWS — green-tinted, x-offset ALWAYS 0 so RTL never mirrors ───── */
+  /* ── SHADOWS - green-tinted, x-offset ALWAYS 0 so RTL never mirrors ───── */
   --shadow-xs: 0 1px 2px 0 #0753440f;
   --shadow-sm: 0 1px 3px 0 #07534414, 0 1px 2px -1px #0753440f;
   --shadow-md: 0 4px 12px -2px #0753441a, 0 2px 6px -2px #07534414;
@@ -176,7 +176,7 @@
   --shadow-fab: 0 8px 24px -4px #04231d4d, 0 2px 8px -2px #04231d33;
   --shadow-header: 0 1px 0 0 #07534414, 0 6px 18px -12px #07534429;
 
-  /* ── SPACING — 4px base plus the named page rhythm ────────────────────── */
+  /* ── SPACING - 4px base plus the named page rhythm ────────────────────── */
   --spacing: 0.25rem;
   --spacing-gutter: clamp(1.25rem, 0.5rem + 4.5vw, 5.5rem); /*  20 →  88 */
   --spacing-section: clamp(4.5rem, 3rem + 6vw, 7rem); /*  72 → 112 */
@@ -186,15 +186,15 @@
   /* ── CONTAINERS ───────────────────────────────────────────────────────────
      `--container-page` deliberately replaces the spec's `--container-max`:
      `max-w-max` is a Tailwind built-in (max-content) and must not be shadowed. */
-  --container-prose: 44rem; /*  704 — section-heading copy */
-  --container-content: 68rem; /* 1088 — grids, forms */
-  --container-wide: 77.5rem; /* 1240 — service split */
-  --container-page: 90rem; /* 1440 — hero, header */
+  --container-prose: 44rem; /*  704 - section-heading copy */
+  --container-content: 68rem; /* 1088 - grids, forms */
+  --container-wide: 77.5rem; /* 1240 - service split */
+  --container-page: 90rem; /* 1440 - hero, header */
 
-  /* ── BREAKPOINTS — v4 stock plus xs ───────────────────────────────────── */
+  /* ── BREAKPOINTS - v4 stock plus xs ───────────────────────────────────── */
   --breakpoint-xs: 26.25rem; /* 420 */
 
-  /* ── MOTION — 4 easings, 5 durations ──────────────────────────────────── */
+  /* ── MOTION - 4 easings, 5 durations ──────────────────────────────────── */
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
@@ -214,7 +214,7 @@
    SEMANTIC LAYER
    `inline` makes the utilities emit var(--surface) rather than a resolved hex,
    so [data-surface="dark"] flips an entire subtree at runtime with no extra
-   CSS. Components consume ONLY these tokens — never a primitive, never a hex.
+   CSS. Components consume ONLY these tokens - never a primitive, never a hex.
    ══════════════════════════════════════════════════════════════════════════ */
 @theme inline {
   --color-surface: var(--surface);
@@ -306,7 +306,7 @@
   }
 
   /* Dark-green scopes: the contact section, the cleaning panel, the green
-     modal. NOT dark mode — colour-scheme deliberately stays light because the
+     modal. NOT dark mode - colour-scheme deliberately stays light because the
      white form card lives inside this scope and its native inputs must not
      be repainted by the browser. */
   [data-surface="dark"] {
@@ -405,7 +405,7 @@
     color: #19312c;
   }
 
-  /* ── Focus — one rule, every control ───────────────────────────────────────
+  /* ── Focus - one rule, every control ───────────────────────────────────────
      Zero specificity via :where(), so a component can restyle the ring but
      never accidentally lose it. The 2px offset renders in the surface colour,
      which is why the ring only has to clear 3:1 against one background. */
@@ -415,7 +415,7 @@
     border-radius: inherit;
   }
 
-  /* :focus without -visible is never styled — mouse users see nothing. */
+  /* :focus without -visible is never styled - mouse users see nothing. */
 
   /* ── German ───────────────────────────────────────────────────────────────
      "Personenstandsdokumente", "Immobilienfinanzierung": German compound
@@ -503,7 +503,7 @@
     font-variant-caps: normal;
   }
 
-  /* Never justify Arabic — the word-space stretching destroys the rhythm. */
+  /* Never justify Arabic - the word-space stretching destroys the rhythm. */
   html[lang="ar"] :is(h1, h2, h3, p, li) {
     text-align: start;
   }

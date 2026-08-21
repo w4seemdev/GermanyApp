@@ -7,7 +7,7 @@
  * default in CSS, so killing the animation never hides anything."
  *
  * That rules out the usual implementation. Nothing here sets `opacity: 0` in a
- * stylesheet — the animation class is added by JS only once the element enters
+ * stylesheet - the animation class is added by JS only once the element enters
  * the viewport, and the keyframe itself starts at 0 and finishes at 1. So:
  *
  *  - no JavaScript  → content is visible, never a blank page
