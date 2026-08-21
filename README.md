@@ -117,9 +117,15 @@ form goes live. See [`HANDOFF.md`](./HANDOFF.md).
 | Legal name incl. legal form | Impressum (§ 5 DDG) | `src/content/shared/nap.ts` |
 | Managing director / owner | Impressum (§ 5 DDG) | `src/content/shared/nap.ts` |
 | Register court + number, USt-IdNr. | Impressum, if applicable | `src/content/shared/nap.ts` |
-| Arabic sign-off by a named person | Launch | `src/content/ar/` |
-| Per-service body copy | Service detail depth | `src/content/{de,ar}/` |
+| Arabic sign-off by a named person | Launch | `src/content/ar/services.ts` |
 | Photography and logo source | Hero and cards | `public/` |
+
+All six services now carry the client's full PDF content in both locales:
+intros, sub-blocks, item lists and closings. The German is the client's own
+verbatim wording. The Arabic follows their Arabic PDF's structure, which is
+genuinely different from the German (no post-arrival block, finance as one flat
+list), and every Arabic service is marked `draft-needs-client-approval` -
+`unapprovedServices('ar')` reports them, so a release check can block on it.
 
 The Impressum renders unknown fields as visible `«…»` placeholders by design, and
 `hasUnresolvedPlaceholders()` exists so a release check can fail on them.
