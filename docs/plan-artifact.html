@@ -1,0 +1,632 @@
+<title>Zukunft Service Website Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+
+<style>
+:root{
+  --ground:#fbfcfb;
+  --surface:#ffffff;
+  --surface-2:#f4f7f5;
+  --ink:#14211f;
+  --ink-2:#3d4f4b;
+  --ink-3:#667873;
+  --rule:#dde5e2;
+  --rule-2:#eef2f0;
+  --accent:#075344;
+  --gold:#8a6013;
+  --gold-fill:#c48a16;
+  --danger:#8c1d18;
+  --danger-bg:#fdf3f2;
+  --warn:#8a4b12;
+  --warn-bg:#fdf6ec;
+  --ok:#05502f;
+  --ok-bg:#eff6f1;
+  --shadow:0 1px 2px #0753440d,0 8px 24px -12px #07534422;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#101917;
+    --surface:#172220;
+    --surface-2:#1c2926;
+    --ink:#e8efec;
+    --ink-2:#b3c3be;
+    --ink-3:#839994;
+    --rule:#27352f;
+    --rule-2:#1f2c29;
+    --accent:#7fc4b0;
+    --gold:#e3bd52;
+    --gold-fill:#c48a16;
+    --danger:#f0a49e;
+    --danger-bg:#2b1a19;
+    --warn:#e8b57a;
+    --warn-bg:#2a2018;
+    --ok:#8fd6ac;
+    --ok-bg:#16261d;
+    --shadow:0 1px 2px #0006,0 8px 24px -12px #0009;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#101917;
+  --surface:#172220;
+  --surface-2:#1c2926;
+  --ink:#e8efec;
+  --ink-2:#b3c3be;
+  --ink-3:#839994;
+  --rule:#27352f;
+  --rule-2:#1f2c29;
+  --accent:#7fc4b0;
+  --gold:#e3bd52;
+  --gold-fill:#c48a16;
+  --danger:#f0a49e;
+  --danger-bg:#2b1a19;
+  --warn:#e8b57a;
+  --warn-bg:#2a2018;
+  --ok:#8fd6ac;
+  --ok-bg:#16261d;
+  --shadow:0 1px 2px #0006,0 8px 24px -12px #0009;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Public Sans",-apple-system,"Segoe UI",Arial,sans-serif;
+  font-size:16.5px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:1180px;
+  margin-inline:auto;
+  padding:0 clamp(20px,4vw,48px) 96px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:0 56px;
+}
+@media (min-width:1060px){
+  .wrap{grid-template-columns:216px minmax(0,1fr)}
+}
+
+.mast{grid-column:1/-1;padding:clamp(48px,7vw,84px) 0 0}
+.kicker{
+  font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 18px;
+}
+.mast h1{
+  font-family:Newsreader,Georgia,serif;
+  font-weight:600;
+  font-size:clamp(2.3rem,1.4rem+3.6vw,4rem);
+  line-height:1.02;letter-spacing:-.022em;
+  margin:0 0 20px;text-wrap:balance;
+}
+.standfirst{
+  font-size:clamp(1.05rem,1rem+.4vw,1.28rem);
+  line-height:1.6;color:var(--ink-2);max-width:60ch;margin:0 0 28px;
+}
+.meta{
+  display:flex;flex-wrap:wrap;
+  border-block:1px solid var(--rule);
+  margin:0 0 44px;padding:0;
+}
+.meta div{
+  padding:14px 24px 14px 0;margin-inline-end:24px;
+  border-inline-end:1px solid var(--rule);
+}
+.meta div:last-child{border-inline-end:0}
+.meta dt{
+  font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 3px;
+}
+.meta dd{margin:0;font-weight:600;font-size:14.5px;font-variant-numeric:tabular-nums}
+
+.rail{display:none}
+@media (min-width:1060px){
+  .rail{
+    display:block;position:sticky;top:32px;align-self:start;
+    max-height:calc(100vh - 64px);overflow-y:auto;padding-block:6px;
+  }
+}
+.rail p{
+  font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 12px;
+}
+.rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px}
+.rail li{margin:0}
+.rail a{
+  display:flex;gap:10px;
+  color:var(--ink-2);text-decoration:none;font-size:13.5px;line-height:1.4;
+  padding:5px 8px;border-radius:5px;
+  border-inline-start:2px solid transparent;
+}
+.rail a:hover{background:var(--surface-2);color:var(--ink);border-inline-start-color:var(--gold-fill)}
+.rail a span{color:var(--ink-3);font-variant-numeric:tabular-nums;min-width:1.1em}
+
+main{min-width:0}
+section{scroll-margin-top:24px;margin-bottom:60px}
+h2{
+  font-family:Newsreader,Georgia,serif;font-weight:600;
+  font-size:clamp(1.55rem,1.2rem+1.3vw,2.1rem);
+  line-height:1.15;letter-spacing:-.015em;
+  margin:0 0 8px;text-wrap:balance;
+  display:flex;gap:14px;align-items:baseline;
+}
+h2 .num{
+  font-family:"JetBrains Mono",monospace;font-size:.55em;font-weight:400;
+  color:var(--gold);letter-spacing:0;flex:none;
+}
+h3{font-size:1.02rem;font-weight:700;letter-spacing:-.005em;margin:32px 0 10px;color:var(--ink)}
+h4{font-size:.86rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin:26px 0 8px}
+p{margin:0 0 15px;max-width:68ch;text-wrap:pretty}
+.lede{color:var(--ink-2);font-size:1.04rem;margin-bottom:22px;max-width:66ch}
+ul,ol.body{margin:0 0 16px;padding-inline-start:20px;max-width:68ch}
+li{margin-bottom:8px}
+a{color:var(--accent);text-decoration-thickness:1.5px;text-underline-offset:2.5px}
+a:hover{color:var(--gold)}
+:focus-visible{outline:2.5px solid var(--gold-fill);outline-offset:2px;border-radius:3px}
+code{
+  font-family:"JetBrains Mono",monospace;font-size:.85em;
+  background:var(--surface-2);padding:1.5px 5px;border-radius:4px;
+  border:1px solid var(--rule-2);
+}
+
+.tw{overflow-x:auto;margin:0 0 20px;border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14.2px;line-height:1.5}
+th{
+  text-align:start;font-weight:700;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3);padding:12px 14px;border-bottom:1px solid var(--rule);
+  background:var(--surface-2);white-space:nowrap;
+}
+td{padding:11px 14px;border-bottom:1px solid var(--rule-2);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.n{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--ink-3);white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:var(--surface-2)}
+
+.note{
+  border-inline-start:3px solid var(--gold-fill);
+  background:var(--surface-2);
+  padding:16px 20px;border-radius:0 8px 8px 0;margin:0 0 22px;
+}
+.note.alert{border-inline-start-color:var(--danger);background:var(--danger-bg)}
+.note.good{border-inline-start-color:var(--ok);background:var(--ok-bg)}
+.note.warn{border-inline-start-color:var(--warn);background:var(--warn-bg)}
+.note p:last-child,.note ul:last-child{margin-bottom:0}
+.note .lbl{
+  font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  display:block;margin-bottom:6px;color:var(--ink-3);
+}
+.note.alert .lbl{color:var(--danger)}
+.note.good .lbl{color:var(--ok)}
+.note.warn .lbl{color:var(--warn)}
+
+.chip{display:inline-flex;align-items:center;gap:7px;font-family:"JetBrains Mono",monospace;font-size:12px;white-space:nowrap}
+.chip i{width:15px;height:15px;border-radius:3px;flex:none;border:1px solid #0002;display:block}
+.ratio{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;font-weight:600}
+.fail{color:var(--danger)}
+.pass{color:var(--ok)}
+
+pre{
+  background:var(--surface-2);border:1px solid var(--rule);border-radius:8px;
+  padding:16px 18px;overflow-x:auto;margin:0 0 20px;
+  font-family:"JetBrains Mono",monospace;font-size:12.8px;line-height:1.6;
+}
+pre code{background:none;border:0;padding:0;font-size:inherit}
+
+.ar{font-family:"Segoe UI",Tahoma,Arial,sans-serif;direction:rtl;unicode-bidi:isolate;line-height:1.9}
+.pill{
+  display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;padding:2.5px 8px;border-radius:999px;
+  background:var(--surface-2);border:1px solid var(--rule);color:var(--ink-3);
+}
+.pill.ok{background:var(--ok-bg);border-color:transparent;color:var(--ok)}
+
+footer{
+  grid-column:1/-1;border-top:1px solid var(--rule);
+  margin-top:24px;padding-top:26px;color:var(--ink-3);font-size:13.5px;
+}
+footer p{max-width:72ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="kicker">Planning dossier · August 2026</p>
+  <h1>Zukunft Service</h1>
+  <p class="standfirst">A bilingual German/Arabic showcase website for a Dortmund service agency — React, TypeScript and Tailwind, UI only, handed to a backend developer who implements one thing: an email that reaches the owner.</p>
+  <dl class="meta">
+    <div><dt>Fee</dt><dd>$700 fixed</dd></div>
+    <div><dt>Scope</dt><dd>UI only</dd></div>
+    <div><dt>Locales</dt><dd>de · ar (RTL)</dd></div>
+    <div><dt>Routes</dt><dd>22 prerendered</dd></div>
+    <div><dt>Status</dt><dd>Plan — no code yet</dd></div>
+  </dl>
+</header>
+
+<nav class="rail" aria-label="Contents">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#s0"><span>00</span>Decisions</a></li>
+    <li><a href="#s1"><span>01</span>What we're building</a></li>
+    <li><a href="#s2"><span>02</span>Confirmed data</a></li>
+    <li><a href="#s3"><span>03</span>Scope &amp; budget</a></li>
+    <li><a href="#s4"><span>04</span>Design concept</a></li>
+    <li><a href="#s5"><span>05</span>Design system</a></li>
+    <li><a href="#s6"><span>06</span>Architecture</a></li>
+    <li><a href="#s7"><span>07</span>The form</a></li>
+    <li><a href="#s8"><span>08</span>Compliance</a></li>
+    <li><a href="#s9"><span>09</span>Conversion</a></li>
+    <li><a href="#s10"><span>10</span>Build plan</a></li>
+    <li><a href="#s11"><span>11</span>Risks</a></li>
+    <li><a href="#s12"><span>12</span>Open questions</a></li>
+  </ol>
+</nav>
+
+<main>
+
+<div class="note">
+  <span class="lbl">Scope confirmed</span>
+  <p>Full bilingual German + Arabic — 22 prerendered pages, all 67 service items in both languages. Planning figure <strong>~62–66 hours</strong>. The largest line item is content, not code, and the Arabic carries real risk because it describes regulated activities. That review time is where this project would actually go wrong — not in the components.</p>
+</div>
+
+<section id="s0">
+<h2><span class="num">00</span>Decisions at a glance</h2>
+<div class="tw">
+<table>
+<thead><tr><th>Question</th><th>Decision</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Framework</td><td><strong>Next.js 16, every route prerendered</strong></td><td>WhatsApp link-preview crawlers don't run JS — and this audience shares by WhatsApp. Also gives server-rendered <code>&lt;html lang dir&gt;</code>, so no RTL flash.</td></tr>
+<tr><td>Service detail</td><td><strong>Real pages, not modals</strong></td><td>12 indexable URLs instead of 2; removes a focus-trap risk. Marginal cost ≈ 0.</td></tr>
+<tr><td>URL slugs</td><td><strong>Latin in both locales</strong></td><td>Guarantees the language switch always has a target; no percent-encoding breakage in WhatsApp.</td></tr>
+<tr><td>i18n library</td><td><strong>None — typed TS modules</strong></td><td>Arabic content is structurally different, not just translated. <code>tsc</code> becomes the completeness check.</td></tr>
+<tr><td>Typography</td><td><strong>IBM Plex Serif + Sans + Sans Arabic</strong></td><td>One superfamily with a real Arabic companion. Self-hosted ⇒ no Google Fonts DSGVO exposure.</td></tr>
+<tr><td>Gold as text</td><td><strong>Banned</strong> — fills only</td><td><code>#c48a16</code> is 2.96:1 on the page ground. Gold text becomes <code>#8a6013</code>.</td></tr>
+<tr><td>Cookie banner</td><td><strong>None</strong></td><td>Zero cookies, zero third-party requests ⇒ §25 TDDDG never triggers.</td></tr>
+<tr><td>Consent checkbox</td><td><strong>No checkbox</strong>, visible privacy notice instead</td><td>A contact form runs on Art. 6(1)(b)/(f), not consent. Flagged for the client's lawyer.</td></tr>
+<tr><td>Dark mode</td><td><strong>No</strong> — tokens built dark-ready</td><td>"What is cream in the dark?" is an unasked brand question. Quote separately.</td></tr>
+<tr><td>Mobile nav</td><td><strong>Full-screen overlay at 1024px</strong></td><td>Fixes the reference site's worst bug. No directional geometry ⇒ RTL is free.</td></tr>
+<tr><td>WhatsApp FAB</td><td><strong><code>#128c7e</code></strong>, not <code>#25d366</code></td><td>White glyph on <code>#25d366</code> is 1.98:1 — invisible to low-vision users.</td></tr>
+<tr><td>Tests</td><td><strong>3 Vitest files, no DOM tests</strong></td><td>Schema contract, content parity + banned-language lint, locale paths. ~45 min.</td></tr>
+<tr><td>Hosting</td><td><strong>EU region</strong></td><td>Shortens and hardens the privacy declaration. Also a TTFB win.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="s1">
+<h2><span class="num">01</span>What we're building</h2>
+<p class="lede">A calm, fast brochure site for a Dortmund agency that helps mostly Arabic-speaking residents through German bureaucracy — naturalisation, documents, marriage and translation, study and visas, finance, real estate — plus a commercial cleaning arm.</p>
+<p>It is a showcase site with <strong>exactly one moving part</strong>: a contact form that emails the owner. We build the complete UI; a separate backend developer implements the send.</p>
+<p>Two things make it harder than it looks, and neither is optional:</p>
+<ul>
+<li><strong>It is genuinely bilingual with full RTL</strong> — and the client's German and Arabic source documents are <em>not</em> translations of each other. They differ in structure, not just wording.</li>
+<li><strong>The copy is legally load-bearing.</strong> In Germany, legal, tax and insurance advice are licensed activities. The client's own copy is carefully hedged, and their live draft already carries the line <em>"Keine Rechtsberatung."</em> Rewriting it for punchiness creates real liability.</li>
+</ul>
+</section>
+
+<section id="s2">
+<h2><span class="num">02</span>Confirmed business data</h2>
+<div class="note good">
+  <span class="lbl">Client-confirmed 20 Aug 2026</span>
+  <p>Single source of truth for <code>nap.ts</code>, the footer, the info strip, the <code>LocalBusiness</code> JSON-LD and the Impressum shell.</p>
+</div>
+<div class="tw">
+<table>
+<tbody>
+<tr><td style="width:190px"><strong>Address</strong></td><td>Ruhrallee 55, 44139 Dortmund</td></tr>
+<tr><td><strong>Phone / WhatsApp</strong></td><td class="num">+49 177 3825632 → <code>wa.me/491773825632</code></td></tr>
+<tr><td><strong>Email</strong></td><td><code>info@zukunftservice.de</code> — the form destination</td></tr>
+<tr><td><strong>Hours</strong></td><td class="num">Monday–Friday, 10:00–16:00. Closed Sat &amp; Sun.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="note warn">
+  <span class="lbl">Discrepancy worth telling the client</span>
+  <p>Their existing draft site publishes <strong>Thu 10–15 and Fri 10–13</strong>. The confirmed hours are a uniform 10–16, Monday to Friday. Use the client's version everywhere — including <code>openingHoursSpecification</code>, which Google surfaces directly in search and Maps. Their live site is showing customers the wrong hours today.</p>
+</div>
+<p>Hours are stored structurally so one shape serves the German page, the Arabic page and the schema markup. Weekday names render per locale via <code>Intl.DateTimeFormat</code> with <code>ar-u-nu-latn-ca-gregory</code> — bare <code>ar</code> can resolve to the Umm al-Qura calendar in some ICU builds.</p>
+<p><strong>Still outstanding for the Impressum:</strong> legal name and legal form, register data, USt-IdNr., and the licence questions in §12.</p>
+</section>
+
+<section id="s3">
+<h2><span class="num">03</span>Scope and the budget problem</h2>
+<h3>In scope at $700</h3>
+<p>React + TS + Tailwind v4 UI, prerendered static · 11 routes × 2 locales · full DE/AR with RTL · accessibility-corrected palette · responsive to 320px · WCAG 2.2 AA practices · contact form with validation, all states, a working mock and a documented typed backend seam · WhatsApp deep links + FAB · Impressum and Datenschutz <em>page shells</em> · SEO, hreflang, JSON-LD, sitemap, robots · OG images · enforced performance budget · <code>HANDOFF.md</code>.</p>
+
+<h3>Out — name these now, price them separately</h3>
+<p>Backend / actual email sending · deliverability setup (SPF/DKIM/DMARC) · <strong>the legal texts themselves</strong> · copywriting beyond adapting the client's PDFs · translating new copy · photography · logo redesign · Google Business Profile · analytics + cookie banner (one implies the other) · a third locale · blog or CMS · booking or payment · hosting, domain, deployment, maintenance · formal accessibility audit.</p>
+
+<h3>Where the effort actually goes</h3>
+<div class="tw">
+<table>
+<thead><tr><th>Workstream</th><th>Hours</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>Architecture, tokens, primitives, layout</td><td class="num">16</td><td>Shared by both locales — built once</td></tr>
+<tr><td>Home sections, service template, legal shells, SEO</td><td class="num">14</td><td>One template, six data objects per locale</td></tr>
+<tr><td>Contact form — validation, all states, mock, contract</td><td class="num">6</td><td>The only functional surface</td></tr>
+<tr><td>German content entry</td><td class="num">4</td><td>67 items across six verticals</td></tr>
+<tr><td><strong>Arabic content, RTL QA, bidi sweep</strong></td><td class="num"><strong>27</strong></td><td><strong>The largest and riskiest block</strong> — regulated wording, needs a named reviewer</td></tr>
+<tr><td>Perf, a11y sweep, handoff docs</td><td class="num">4</td><td></td></tr>
+<tr><td><strong>Total</strong></td><td class="num"><strong>~62</strong></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Two things still worth putting in writing</strong>, because they protect the schedule rather than the fee: two revision rounds included, further rounds by arrangement; and if client content — legal text, photos — is outstanding more than 14 days after the UI is complete, deliver with placeholders rather than letting the project hang open indefinitely. UI delivery is also not contingent on the backend developer finishing.</p>
+</section>
+
+<section id="s4">
+<h2><span class="num">04</span>Design concept — "Split"</h2>
+<p class="lede">The duality is real, so make it the system.</p>
+<p>The business has two arms and says so itself on its live draft: <em>"Wie können wir Ihnen helfen? <strong>Zwei Leistungsbereiche</strong>, ein verlässlicher Ansprechpartner."</em> The logo encodes the same duality — a document and a broom. And there are two languages. The developer's own "split app concept" instinct has business justification behind it, not just visual appeal.</p>
+<p>Build it as an <strong>asymmetric</strong> split system, not a 50/50 gimmick: one <code>SplitSection</code> primitive with ratio tokens (<code>1.03:0.97</code> at the hero → <code>0.8:1.2</code> at contact), varied deliberately down the page. Three reasons it's architecturally right and not merely decorative:</p>
+<ol class="body">
+<li><strong>CSS Grid column order follows <code>dir</code></strong> — the whole motif mirrors into Arabic with zero extra code. The visual concept and the RTL requirement are aligned rather than fighting.</li>
+<li>Six bespoke section layouts collapse into six <em>compositions</em> of one primitive. At $700 that is real time.</li>
+<li>The reference site <em>has</em> splits; it has no <em>system</em> of them. That's the difference the client is paying for.</li>
+</ol>
+<div class="note">
+  <span class="lbl">Grafted from the runner-up concept</span>
+  <p>The client's own closing line in both PDFs is <em>"You have a matter and don't know where to begin?"</em> — the product <strong>is</strong> removing that uncertainty. So the home page gains a <strong>3-step process strip</strong>: <em>Anliegen schildern → Gemeinsam sortieren → Nächste Schritte</em>. It costs one row, it's the best anxiety-reducer available, and it is the <strong>legally safest way to describe the business</strong> — a process description makes no outcome promise.</p>
+</div>
+</section>
+
+<section id="s5">
+<h2><span class="num">05</span>Design system</h2>
+<p>The reference site's stylesheet gave us the exact brand tokens. We keep them, fix what fails accessibility, and add what's missing.</p>
+<pre><code>--green: #075344   --deep: #043b32   --sage: #769b7e
+--gold:  #c48a16   --cream: #f7f0e5  --ink:  #19312c
+/* page background #fffdf9 */</code></pre>
+
+<h3>Three real contrast failures</h3>
+<p>Every ratio computed from WCAG relative luminance, not estimated.</p>
+<div class="tw">
+<table>
+<thead><tr><th>Problem</th><th>Measured</th><th>Fix</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>Gold as text</strong><br><span style="color:var(--ink-3);font-size:13px">eyebrows, "Details →" links</span></td>
+  <td><span class="chip"><i style="background:#c48a16"></i>#c48a16</span> on page ground<br><span class="ratio fail">2.96:1</span> — and <span class="ratio fail">2.65:1</span> on cream. Fails AA text <em>and</em> the 3:1 non-text floor.</td>
+  <td>Gold becomes <strong>fills only</strong>. Gold text on light → <span class="chip"><i style="background:#8a6013"></i>#8a6013</span> <span class="ratio pass">5.49:1</span>, chosen specifically to clear the deeper footer cream at 4.76. On dark green → <span class="chip"><i style="background:#e3bd52"></i>#e3bd52</span> <span class="ratio pass">6.95:1</span></td>
+</tr>
+<tr>
+  <td><strong>The focus ring</strong></td>
+  <td>Gold at 40% opacity ≈ <span class="ratio fail">1.6:1</span> — functionally invisible</td>
+  <td><span class="chip"><i style="background:#a97612"></i>#a97612</span> at 3px with <code>outline-offset: 2px</code> so the gap renders in the surface colour. <span class="ratio pass">3.91:1</span></td>
+</tr>
+<tr>
+  <td><strong>Small muted text</strong><br><span style="color:var(--ink-3);font-size:13px">footnotes, info strip, copyright</span></td>
+  <td><span class="chip"><i style="background:#6c7a76"></i>#6c7a76</span> <span class="ratio fail">4.41:1</span> on ground, <span class="ratio fail">3.82:1</span> on the footer. Two more greys also fail — and these are the <em>smallest</em> text on the page.</td>
+  <td>Nine muted greys collapse to <strong>one token</strong> <span class="chip"><i style="background:#5a6b66"></i>#5a6b66</span> — <span class="ratio pass">≥4.80:1</span> on every light surface we ship. Highest value-per-hour change in the system.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Two more worth naming: the gold button is fine (<span class="ratio pass">4.90:1</span>) but must go <strong>lighter</strong> on hover, not darker. And <code>#dfe7e1</code> on white is <span class="ratio fail">1.42:1</span> — not a perceivable boundary, so a clickable card must never rely on its border as the affordance.</p>
+<pre><code>GOLD RULE
+#c48a16  → FILLS ONLY. Buttons, ≥3px rules, dots, the logo. NEVER text.
+#a97612  → focus rings on light; gold text only ≥24px regular / ≥18.66px bold.
+#8a6013  → ALL gold text on light surfaces, any size.
+#e3bd52  → ALL gold text on dark-green surfaces.</code></pre>
+
+<h3>Arabic is not "German in a different font"</h3>
+<p>Four things change, and this is where most bilingual sites fail:</p>
+<ul>
+<li><strong>Display sizes go <em>down</em> ~12–17%</strong> — Arabic ascenders and descenders make headlines run taller and heavier; a Latin-sized Arabic h1 looks shouty and wraps to two lines.</li>
+<li><strong>Body sizes go <em>up</em> ~5–8%</strong> — Arabic glyphs are optically smaller relative to the em.</li>
+<li><strong>Line-height increases substantially</strong> — body 1.90 vs 1.65, h1 1.28 vs 0.96.</li>
+<li><strong>Letter-spacing must be exactly 0 and <code>text-transform</code> must never fire.</strong> Tracking <em>breaks the cursive joins</em> between Arabic letterforms. The eyebrow's 0.16em tracking and uppercase are disabled in Arabic entirely.</li>
+</ul>
+<div class="note alert">
+  <span class="lbl">The bidi bug that will otherwise ship</span>
+  <p>Every Latin run inside Arabic copy — phone numbers, emails, <code>+49</code>, "Zukunft Service" — must be wrapped in <code>&lt;bdi dir="ltr"&gt;</code>. Without it <code>+49 177 3825632</code> renders as <code>3825632 177 49+</code> and <strong>the user cannot dial the number</strong>. It's the most common Arabic-web bug and it <em>will</em> hit the info strip, which now carries a confirmed phone number.</p>
+  <p class="ar" style="margin-top:10px">مثال: اتصل بنا على <bdi dir="ltr">+49 177 3825632</bdi> من الاثنين إلى الجمعة.</p>
+</div>
+<p>Typeface: <strong>IBM Plex Serif + Sans + Sans Arabic</strong> — one superfamily whose Arabic was drawn to the same brief as the Latin with matched vertical metrics, so both locales read as one brand rather than a bolted-on script. Loaded via <code>next/font</code>, which self-hosts — removing the Google Fonts exposure that produced roughly 100,000 Abmahnungen after <em>LG München I, 3 O 17493/20</em>.</p>
+</section>
+
+<section id="s6">
+<h2><span class="num">06</span>Architecture</h2>
+<p><strong>Next.js 16 App Router + React 19 + TypeScript 5.9 + Tailwind v4</strong>, every route prerendered. Astro is the honest runner-up — less JS, arguably the better brochure tool — but the brief hard-requires React as the handed-over artifact, and the React form island drags React back in anyway. A plain Vite SPA is rejected outright: no link previews, no server-rendered hreflang, and a visible LTR→RTL flash on every Arabic page load.</p>
+<p><strong>Nine runtime dependencies, ~25 KB gzipped:</strong> <code>next</code>, <code>react</code>, <code>react-dom</code>, <code>react-hook-form</code>, <code>zod</code>, <code>@hookform/resolvers</code>, <code>clsx</code>, <code>lucide-react</code>.</p>
+<p><strong>Explicitly rejected:</strong> framer-motion (~34 KB for what <code>@keyframes</code> does here) · any i18n library (they assume key symmetry; ours is asymmetric by design) · Radix/shadcn (native <code>&lt;dialog&gt;</code> gives focus trap, Esc, <code>inert</code> and backdrop for 0 KB) · any state library (not one piece of state is read by two unrelated subtrees) · carousel libraries (CSS <code>scroll-snap</code> is RTL-correct with no configuration) · reCAPTCHA (US processor, consent trigger).</p>
+
+<h3>RTL in three layers</h3>
+<ol class="body">
+<li><strong>~95% — CSS logical properties</strong> via Tailwind v4. <code>pl-</code> <code>pr-</code> <code>ml-</code> <code>mr-</code> <code>left-</code> <code>right-</code> <code>text-left</code> <code>text-right</code> are <strong>banned</strong>, enforced by a ~25-line build check. A code-review convention won't survive a deadline; a failing build will.</li>
+<li><strong>~4% — <code>rtl:</code>/<code>ltr:</code> variants</strong> where no logical property exists.</li>
+<li><strong>~1% — custom <code>@utility</code> with a <code>[dir="rtl"]</code> override</strong> for gradients, the one thing CSS has no logical syntax for.</li>
+</ol>
+<p><strong>Shadow mirroring is eliminated, not solved</strong> — every shadow token has an x-offset of 0. <strong>Grid and flex mirror for free</strong>, which is the real argument for building the split motif on Grid. Arrows and chevrons mirror by <em>swapping the component</em>, not CSS-scaling; the logo, checkmarks, phone, clock, map-pin, the WhatsApp glyph and any numeral never mirror.</p>
+
+<h3>Content model — the highest-risk decision</h3>
+<p>The Arabic PDF omits the entire post-arrival support block, merges three finance sub-blocks into one flat list, has <em>richer</em> "Warum" copy than the German, and lists cleaning types differently. Every service is modelled as <code>ServiceBlock[]</code> — a flat list is one untitled block, sub-blocks are several titled ones — so the two locales differ in block <em>count</em> without differing in <em>type</em>.</p>
+<pre><code>export type ServiceContentMap = Record&lt;Locale, Record&lt;ServiceId, ServiceContent&gt;&gt;;
+//                                     ↑ spine: both locales, all six, mandatory
+//                                                            ↑ body inside is free</code></pre>
+<p>The <strong>spine</strong> (service ids, why-points, nav, all UI microcopy, every title and meta description) is type-enforced in both locales — TypeScript errors on any omission. The <strong>body</strong> may diverge freely, with a <code>CONTENT_GAPS</code> registry turning every divergence into a line the client initials, and unregistered drift into a build failure.</p>
+<div class="note alert">
+  <span class="lbl">Hard rule</span>
+  <p>Never machine-translate hedged legal copy. Any Arabic we author carries <code>status: 'draft-needs-client-approval'</code> and does not go live without written client sign-off. Getting a hedging verb wrong in regulated subject matter means the client carries the liability.</p>
+</div>
+</section>
+
+<section id="s7">
+<h2><span class="num">07</span>The contact form</h2>
+<p class="lede">The entire functional surface of the site. Everything else can be judged by eye; this is the only thing that can be <em>broken</em>.</p>
+<p><strong>Two invariants:</strong> <code>submitContactForm()</code> never throws — every failure is a value in a discriminated union, so there's no <code>try/catch</code> anywhere in a component. And the backend developer changes zero frontend files in the happy path: he sets one env var and implements a documented contract. If his API shape differs, he edits exactly one ~40-line function.</p>
+
+<h3>Field order — deliberately not the conventional one</h3>
+<p><strong>Do not open with "Name."</strong> Asking a user worried about their residency status to identify themselves first is the highest-friction possible opening.</p>
+<ol class="body">
+<li><strong>"Worum geht es?"</strong> — service select, six options <strong>plus "Sonstiges / Ich bin mir nicht sicher."</strong> That seventh option is the most important control on the form: the client's own headline is <em>"you don't know where to start?"</em>, so a required select with no escape hatch would contradict the brand promise.</li>
+<li><strong>The message</strong> — second, so the user tells their story before being asked who they are.</li>
+<li><strong>Name</strong>, then <strong>email</strong> (required, it's the Reply-To), <strong>phone</strong> (optional; required only if WhatsApp opt-in is ticked).</li>
+<li><strong>Preferred contact time</strong> — and because the confirmed hours are 10:00–16:00, the options are <em>Vormittags (10–13)</em> / <em>Nachmittags (13–16)</em> / <em>Egal</em>. Never offer an evening slot the business cannot honour.</li>
+</ol>
+<p>Phone validation is deliberately permissive — no <code>libphonenumber</code> (78–145 KB for one optional field), and the hint reads <em>"z. B. +49 oder +963."</em> A form implying German numbers only reads as exclusionary to exactly the audience this business serves; a false rejection is a lost lead, and the receiving human is the real validator.</p>
+
+<h3>The contract</h3>
+<pre><code>export interface ContactFormPayload {
+  name: string;                  // 2–80, no CR/LF
+  email: string;                 // Reply-To — NEVER From
+  phone: PhoneValue | null;      // { raw, e164, assumedCountry }
+  whatsappOptIn: boolean;
+  serviceCategory: ServiceCategory;
+  message: string;               // 10–2000, untrusted — escape before HTML email
+  preferredContactTime: ContactTime;
+  privacyNoticeVersion: string;
+  locale: 'de' | 'ar';           // REPLY IN THIS LANGUAGE
+  meta: { submittedAt, elapsedMs, linkCount, pagePath, timezone, clientVersion };
+}
+
+export type ContactFormResult =
+  | { ok: true; referenceId: string | null }
+  | { ok: false; error: ContactFormError };</code></pre>
+<p><strong>The mock ships enabled by default</strong>, with magic addresses (<code>429@test.de</code>, <code>500@test.de</code>, <code>offline@test.de</code>, <code>slow@test.de</code>) that demo every UI state with no backend at all — worth real money on a fixed fee, because it lets you get sign-off and close the UI phase without waiting on anyone.</p>
+
+<div class="note alert">
+  <span class="lbl">Three things that silently destroy the feature</span>
+  <ul>
+  <li><strong><code>From:</code> must be the site's own domain, never the submitter's address.</strong> Setting <code>From: user@gmail.com</code> fails Gmail's DMARC and the owner's notification is rejected or spam-filed. The most common contact-form mistake in existence.</li>
+  <li><strong>SPF, DKIM and DMARC on <code>zukunftservice.de</code>.</strong> Without them notifications quietly disappear and the client concludes "the website doesn't work."</li>
+  <li><strong>Strip <code>\r</code>/<code>\n</code> from anything interpolated into a mail header.</strong> SMTP header injection. We block it at the edge too, but the edge is bypassable.</li>
+  </ul>
+</div>
+<p><strong>Spam:</strong> honeypot plus a 3-second timing trap, and nothing else in v1. Both trigger <em>silent success</em> — the bot logs a win and gets no signal to tune against. Turnstile and hCaptcha are deferred deliberately: they're US processors loaded on page render, which for a German site means a privacy-declaration entry, an AV-Vertrag, and an argument about consent-gating your own contact form.</p>
+</section>
+
+<section id="s8">
+<h2><span class="num">08</span>Compliance, accessibility, SEO</h2>
+<div class="note alert">
+  <span class="lbl">The commercial risk</span>
+  <p>A missing or defective Impressum is actionable under §3a UWG. Typical Streitwert €1,500–€5,000, first-letter fees €300–€900, contractual penalties €2,500–€5,100 per repeat. <strong>Shipping without a complete Impressum can cost more than the entire project fee on the first letter.</strong></p>
+</div>
+<p><strong>The obligation is now §5 DDG, not §5 TMG</strong> — the TMG was replaced on 14 May 2024. Boilerplate still citing "§5 TMG" quotes a repealed provision and signals to an Abmahn-lawyer that nobody reviewed the site. There is no small-business exemption. The link must be labelled literally <em>Impressum</em> (case law has rejected "Kontakt", "Legal", "Info"). Also: <strong>the EU ODR platform shut down on 20 July 2025</strong> — any boilerplate still linking it must be deleted.</p>
+<p><strong>The mitigation is mechanical:</strong> every still-missing Impressum field is typed with a <code>«…»</code> sentinel that renders loudly in dev and <strong>fails the production build</strong>. ~15 lines, and it makes shipping a placeholder Impressum impossible.</p>
+<p><strong>Four regulated activities need a direct question to the client</strong>, because each — if licensed — adds mandatory Impressum fields, and if unlicensed makes the hedged copy load-bearing: <strong>§34d GewO</strong> (insurance mediation — "Lebensversicherung, Alters- und Zukunftsvorsorge" is squarely in this territory and is the highest-risk copy on the site), <strong>§34c/§34i GewO</strong> (real estate and loans, including the Dubai section), <strong>RDG</strong>, and <strong>Handwerkskammer</strong> registration for the cleaning arm.</p>
+<div class="note">
+  <span class="lbl">Enforce the hedging in the build, not in a document</span>
+  <p>A copy constraint written in Word is violated within one edit cycle. Ship a banned-lexicon lint over <code>src/content/**</code> in CI — <code>/\bwir beraten\b/i</code>, <code>/\bgarantier/i</code>, <code>/نضمن/</code>, <code>/استشارة\s*قانونية/</code> — plus a <code>&lt;HedgeNotice&gt;</code> mandatory on the Finanzen, Immobilien and Behörden pages. This converts a legal-exposure requirement into a build gate: ~90 minutes, and the cheapest risk mitigation in the plan.</p>
+</div>
+
+<h3>No cookie banner — and the rules that hold it</h3>
+<p>Zero cookies, zero third-party requests ⇒ §25 TDDDG never triggers ⇒ no banner. This is better at any budget: a banner costs design time, a11y work (it's a focus-trap modal on first paint), CLS budget and conversion — it is a wall between an anxious first-time visitor and the page.</p>
+<p>Held by hard rules: no Google Fonts CDN · no Maps iframe (address card + an "In Google Maps öffnen ↗" link instead) · no video embeds · no analytics in v1 · no CDN-hosted assets. Enforced by a build script that greps the output for external origins and fails, plus <code>Content-Security-Policy: default-src 'self'</code>. One <code>localStorage</code> key is approved — the chosen locale, strictly necessary under §25 Abs. 2 Nr. 2.</p>
+
+<h3>Two ARIA details routinely got wrong</h3>
+<ul>
+<li>Individual field errors are <strong>not</strong> live regions — that produces a machine-gun of announcements while tabbing. They're announced via <code>aria-describedby</code> on focus, with the <strong>error id first</strong> so the problem is heard before the generic hint.</li>
+<li>The error summary uses <strong>focus movement alone, not <code>role="alert"</code></strong>. Adding both causes a double announcement.</li>
+</ul>
+
+<h3>Performance</h3>
+<p>Test device: a 3–5-year-old mid-range Android on a German mobile network, often on prepaid data. Targets — <strong>LCP ≤ 2.0s · INP ≤ 150ms · CLS ≤ 0.03 · initial JS ≤ 80 KB gz · fonts ≤ 110 KB per locale · third-party requests: 0</strong> — enforced by <code>size-limit</code> and Lighthouse CI as build-failing gates. A budget not enforced by a failing build is a wish.</p>
+<div class="note good">
+  <span class="lbl">Free win available immediately</span>
+  <p>The reference site ships <strong>~6.4 MB of unoptimised PNG</strong>, including an 883 KB logo rendered at 168×68 px. Correct sizing plus AVIF/WebP drops the image payload by well over 90%.</p>
+</div>
+<p><strong>One expectation to set in writing now:</strong> verticals 1–5 are long-tail and trust-driven. The real discovery engine for this business is <strong>Google Business Profile, reviews and WhatsApp sharing</strong> — not organic search. Only cleaning has genuine transactional volume. GBP setup is a separate, priced deliverable.</p>
+</section>
+
+<section id="s9">
+<h2><span class="num">09</span>Conversion notes</h2>
+<p class="lede">The visitor is on a phone, in the evening, holding a German letter they don't fully understand. They've already been turned away from one Amt for a missing document, aren't sure whether contacting you costs money, and are quietly worried that contacting a private company could affect their case.</p>
+<p>Standard SaaS conversion patterns actively backfire here.</p>
+<ul>
+<li><strong>A real face and a real name is the highest-impact single element on the site.</strong> This audience buys a person, not a company. One portrait with a first-person line beats four abstract benefit cards. <em>Will the client publish a portrait? If not, this lever is gone and the design is materially weaker.</em></li>
+<li><strong>"Wir sprechen Arabisch" must be visible on the German page</strong>, in Arabic script, in the hero trust row — not hidden behind the language toggle. Much of this audience lands on <code>/de/</code> from Google and needs to know in one second.</li>
+<li><strong>WhatsApp is co-equal with email, not a fallback.</strong> The confirmed number is a mobile line, which strongly suggests it's already the owner's working channel. Pre-fill the message with the service name so the user never faces a blank box — it also arrives pre-qualified.</li>
+<li><strong>Show the hours as reassurance, not data.</strong> "Mo–Fr 10–16 Uhr" plus <em>"Außerhalb der Öffnungszeiten: schreiben Sie uns — wir melden uns am nächsten Werktag"</em> converts a closed-office moment into a captured lead instead of a bounce.</li>
+<li><strong>No stock photos of smiling business people.</strong> This audience has seen a thousand scam pages and recognises stock instantly — worse than no photo. Three real phone photos of the actual office beat fifteen stock images.</li>
+<li><strong>No countdown timers, no "only 3 slots left."</strong> Predatory-adjacent, poisons a trust-driven sale, and false scarcity is UWG-actionable in Germany anyway.</li>
+<li><strong>Specificity beats claims.</strong> <em>"Wir organisieren syrische und irakische Personenstandsdokumente"</em> proves domain knowledge; <em>"Erfahren und zuverlässig"</em> is what every scam site says. The itemised lists <strong>are</strong> the trust signal — surface them, don't summarise them into benefit-speak.</li>
+</ul>
+</section>
+
+<section id="s10">
+<h2><span class="num">10</span>Build plan</h2>
+<p>Milestones 1–8 build the site with German content; milestone 9 adds the Arabic locale. The split reflects the order of work, not the scope — every prior milestone is reviewed in both directions as it lands.</p>
+<div class="tw">
+<table>
+<thead><tr><th>#</th><th>Milestone</th><th>h</th><th>Verification</th></tr></thead>
+<tbody>
+<tr><td class="n">1</td><td>Scaffold, <code>@theme</code> tokens, fonts, logical-props check, CI gates</td><td class="num">5</td><td><code>npm run verify</code> green; contrast spot-checks pass</td></tr>
+<tr><td class="n">2</td><td>UI primitives — Button, Card, Section, SplitSection, CheckList, MediaFrame, DirectionalIcon, NoticeCallout</td><td class="num">6</td><td>Every variant × state on a scratch page; keyboard-only pass</td></tr>
+<tr><td class="n">3</td><td>Layout — header, <strong>mobile nav</strong>, footer, skip link, locale switch, FAB</td><td class="num">5</td><td>Nav traps focus, closes on Esc, returns focus; FAB bottom-inline-end both dirs</td></tr>
+<tr><td class="n">4</td><td>Home sections 1–7</td><td class="num">7</td><td>320→1920 px no horizontal scroll; reveal works with JS disabled</td></tr>
+<tr><td class="n">5</td><td>Contact form — fields, validation, all states, mock, contract</td><td class="num">6</td><td>Every mock scenario demoed; errors announced; summary takes focus</td></tr>
+<tr><td class="n">6</td><td>Service page template + 6 DE data objects</td><td class="num">4</td><td>All six render; parity + banned-lexicon tests pass</td></tr>
+<tr><td class="n">7</td><td>Legal shells, SEO, JSON-LD, sitemap, robots, OG</td><td class="num">3</td><td>Rich-results test passes; placeholder sentinel fails a prod build</td></tr>
+<tr><td class="n">8</td><td>Perf, images, a11y sweep, <code>HANDOFF.md</code></td><td class="num">4</td><td>Lighthouse ≥ 92/100/100/100 mobile; <code>size-limit</code> green</td></tr>
+<tr><td class="n"></td><td><em>Subtotal — German site complete</em></td><td class="num"><em>~35</em></td><td></td></tr>
+<tr><td class="n">9</td><td><strong>Arabic locale</strong> — content entry, RTL QA, bidi sweep, AR fonts</td><td class="num">27</td><td>Every screen reviewed RTL; <code>&lt;bdi&gt;</code> on every Latin run; parity registry signed off</td></tr>
+<tr><td class="n"></td><td><strong>Total</strong></td><td class="num"><strong>~62</strong></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Review both directions at every milestone, never at the end.</strong> Retrofitting RTL costs 3–4× building it in.</p>
+</section>
+
+<section id="s11">
+<h2><span class="num">11</span>Top risks</h2>
+<div class="tw">
+<table>
+<thead><tr><th>#</th><th>Risk</th><th>Mitigation</th></tr></thead>
+<tbody>
+<tr><td class="n">R1</td><td>Ships with a placeholder Impressum → §3a UWG Abmahnung costing more than the fee</td><td>Sentinel <strong>fails the production build</strong>. Named client deliverable with a date.</td></tr>
+<tr><td class="n">R2</td><td>Client never supplies remaining legal text or photos; fixed-fee project stalls</td><td>Numbered data request. Contract clause: &gt;14 days outstanding ⇒ deliver with placeholders and invoice.</td></tr>
+<tr><td class="n">R3</td><td>Copy drifts into unhedged claims → RDG / §34d / §34c / UWG exposure</td><td>Banned-lexicon lint in CI, <code>&lt;HedgeNotice&gt;</code> on the three riskiest pages, written note that a lawyer should review final copy.</td></tr>
+<tr><td class="n">R4</td><td>A third-party asset sneaks in — a pasted Google Fonts link, a Maps iframe — and the no-banner position collapses</td><td>Build script greps output for external origins and fails. CSP enforces it at runtime.</td></tr>
+<tr><td class="n">R5</td><td>Scope creep against a fixed fee</td><td>Signed IN/OUT table with a <strong>stated price</strong> on every OUT item, so "yes, and it costs €X" is always available.</td></tr>
+<tr><td class="n">R6</td><td>RTL bugs found late — mirrored padding, <code>49+</code> phone numbers, FAB on the wrong side</td><td>Logical properties from commit 1, enforced by a build check. Review both directions every milestone.</td></tr>
+<tr><td class="n">R7</td><td>Email deliverability fails; client concludes "the website is broken"</td><td>Flag SPF/DKIM/DMARC in <code>HANDOFF.md</code>. Backend-owned, but the complaint lands on the frontend developer.</td></tr>
+<tr><td class="n">R8</td><td>Client expects page-one Google rankings from the site alone</td><td>Set the expectation now: GBP + reviews + WhatsApp is the discovery engine. Price GBP separately.</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="s12">
+<h2><span class="num">12</span>Open questions</h2>
+<p>Address, phone, email and hours are <span class="pill ok">Confirmed</span>. What remains:</p>
+
+<h4>Blocking the build</h4>
+<ol class="body">
+<li><strong>Exact legal name and legal form</strong> — Einzelunternehmen, GbR, UG or GmbH — plus Handelsregister court and number if registered, and USt-IdNr. or confirmation of Kleinunternehmer status under §19 UStG.</li>
+<li><strong>Do they hold §34d GewO (insurance), §34c/§34i GewO (real estate/loans), or Handwerkskammer registration?</strong> Each adds mandatory Impressum fields and changes how far the copy may go.</li>
+<li><strong>Who supplies the Datenschutzerklärung text, and by when?</strong></li>
+<li><strong>Who reviews and signs off the Arabic before launch?</strong> Scope is full bilingual, so this sits on the critical path. Any Arabic we author to fill gaps in the client's PDFs describes regulated activities and needs a named human to approve the wording.</li>
+</ol>
+
+<h4>Blocking the design</h4>
+<ol class="body" start="5">
+<li><strong>Real photos or none?</strong> Only four images exist, all AI-generated stock — and the people in them read as European while the audience is Arabic-speaking Syrians and Iraqis, which undercuts the "mehrsprachig" trust promise. Ninety minutes with a modern phone beats any stock library here.</li>
+<li><strong>Will the client publish a portrait and their name?</strong></li>
+<li><strong>Logo source files</strong> — SVG or ≥1000px transparent PNG. Is there an Arabic lockup variant?</li>
+<li><strong>Which slogan?</strong> Three are in circulation: <em>Viele Anliegen. Ein Ansprechpartner.</em> (PDF), <em>Viele Lösungen. Ein Ansprechpartner.</em> (PDF footer), <em>Viele Leistungen. Eine Anlaufstelle.</em> (live site).</li>
+<li><strong>Two golds acceptable?</strong> We ship <code>#c48a16</code> for fills and <code>#8a6013</code> for text. The client asked us to match the colours and will see two. Show a comparison before build.</li>
+<li><strong>Arabic numerals</strong> — Western <code>0–9</code> (recommended: the audience transacts with German forms and phone numbers) or Eastern <span class="ar">٠–٩</span>?</li>
+<li><strong>Arabic grammatical gender</strong> — masculine-singular default or dual-form? A cultural call for the client.</li>
+</ol>
+
+<h4>Blocking launch</h4>
+<ol class="body" start="12">
+<li><strong>What response time will the client commit to?</strong> It goes on the page. A promised 24 h that becomes five days is worse than promising 2–3 working days and hitting it.</li>
+<li><strong>Was the Arabic omission of the post-arrival support block deliberate or an oversight?</strong> Everything about the audience says oversight — it's the strongest differentiator in the whole deck, and Arabic-speaking students are exactly who needs it.</li>
+<li><strong>Hosting and domain</strong> — who owns the accounts, is hosting in the EU, is an AVV in place, does the fee include deployment?</li>
+<li><strong>Any analytics, ever?</strong> If yes, the no-banner position ends and the privacy declaration must be rewritten.</li>
+<li><strong>Tell the client their current site shows outdated opening hours.</strong> Small, but it's wrong information in front of customers today.</li>
+</ol>
+</section>
+
+</main>
+
+<footer>
+<p><strong>How this was produced.</strong> A 12-agent planning workflow: five research specialists completed — content and IA, design system, frontend architecture, the contact-form contract, and German compliance/SEO/accessibility. The two design-concept agents, the synthesizer, three adversarial critics and the finalizer were lost to a session limit.</p>
+<p>Consequences worth knowing: the design concept in §4 is a convergence of the research, not a competed-and-judged winner. The effort estimate in §3 is mine, not a specialist's — summed from the reports' own numbers. Four genuine conflicts between reports were adjudicated by hand: Arabic-script vs Latin slugs (chose Latin), modals vs real service pages (chose pages), the typeface pairing (chose the design system's IBM Plex superfamily), and the DSGVO consent checkbox — where the compliance specialist argues <em>against</em> the checkbox two other reports mandate. I followed the compliance specialist and flagged it for the client's lawyer.</p>
+<p>Full specialist reports, which carry the detail behind every summary here, are in <code>docs/research/</code>.</p>
+</footer>
+
+</div>

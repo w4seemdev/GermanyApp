@@ -1,0 +1,32 @@
+{
+  "name": "zukunft-service",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "lint:rtl": "node scripts/check-logical-props.mjs",
+    "verify": "npm run typecheck && npm run lint:rtl && npm run build"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.33.0",
+    "next": "^16.3.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-hook-form": "^7.85.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  }
+}
