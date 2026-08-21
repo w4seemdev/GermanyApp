@@ -1,0 +1,592 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   ZUKUNFT SERVICE — Tailwind CSS v4 theme
+   Spec: docs/research/02-design-system.md §1–§4 · docs/PLAN.md §5
+
+   THREE LAWS THIS FILE ENFORCES
+   1. Gold #c48a16 is a FILL. Gold text on light = #8a6013, on dark = #e3bd52,
+      focus ring = #a97612. There is no token that lets you set #c48a16 as a
+      text colour.
+   2. Arabic is not German in another font: display sizes go DOWN 12–17 %, body
+      sizes go UP 5–8 %, leading opens up a lot, letter-spacing is forced to 0
+      and text-transform is forced to none (tracking breaks cursive joins).
+   3. Every shadow has an x-offset of 0, so nothing mirrors wrong in RTL.
+
+   FONTS: the locale layout sets --font-sans, --font-serif and --font-arabic
+   via next/font (self-hosted; no request to fonts.gstatic.com). This file only
+   consumes them and supplies the fallback chain.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+@import "tailwindcss";
+
+/* ── Custom variants ─────────────────────────────────────────────────────── */
+@custom-variant ar (&:where(html[lang="ar"], html[lang="ar"] *));
+@custom-variant de (&:where(html[lang="de"], html[lang="de"] *));
+@custom-variant on-dark (&:where([data-surface="dark"], [data-surface="dark"] *));
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PRIMITIVES
+   ══════════════════════════════════════════════════════════════════════════ */
+@theme {
+  /* ── Green (H ≈ 168°) — the brand spine ───────────────────────────────── */
+  --color-brand-green-50: #eef4f2;
+  --color-brand-green-100: #d6e4e0;
+  --color-brand-green-200: #a9c6be;
+  --color-brand-green-300: #6f9d92;
+  --color-brand-green-400: #3b7668;
+  --color-brand-green-500: #0a604f;
+  --color-brand-green-600: #075344; /* ★ brand green */
+  --color-brand-green-700: #05493c;
+  --color-brand-green-800: #043b32; /* ★ deep */
+  --color-brand-green-900: #032e27;
+  --color-brand-green-950: #021f1a;
+
+  /* ── Gold (H ≈ 40°) — one hue, four functional stops ──────────────────── */
+  --color-brand-gold-50: #fdf6e3;
+  --color-brand-gold-100: #f8e9bf;
+  --color-brand-gold-200: #f0d68a;
+  --color-brand-gold-300: #e3bd52; /* gold TEXT on dark green — 6.95:1 */
+  --color-brand-gold-400: #d3a32c; /* gold button hover (lighter, not darker) */
+  --color-brand-gold-500: #c48a16; /* ★ brand gold — FILL ONLY, NEVER TEXT */
+  --color-brand-gold-600: #a97612; /* focus ring on light — 3.91:1 */
+  --color-brand-gold-700: #8a6013; /* gold TEXT on light — 5.49:1 */
+  --color-brand-gold-800: #74520f; /* dense/small gold text — 6.59:1 */
+  --color-brand-gold-900: #5c400d;
+
+  /* ── Sage (H ≈ 133°) — from the logo leaf ─────────────────────────────── */
+  --color-brand-sage-50: #f2f6f2;
+  --color-brand-sage-100: #e3ece5;
+  --color-brand-sage-200: #c7d9cb;
+  --color-brand-sage-300: #a3bfa9;
+  --color-brand-sage-400: #769b7e; /* ★ brand sage — DECORATIVE ONLY (3.11:1) */
+  --color-brand-sage-500: #5d8467; /* large text / UI only (4.23:1) */
+  --color-brand-sage-600: #4a6b52; /* text-safe sage (5.97:1) */
+  --color-brand-sage-700: #3b5642;
+
+  /* ── Cream + mint ─────────────────────────────────────────────────────── */
+  --color-brand-cream-50: #fffdf9; /* ★ page background */
+  --color-brand-cream-100: #f7f0e5; /* ★ cream sections */
+  --color-brand-cream-200: #f4ecdf; /* deeper cream — footer base */
+  --color-brand-mint-100: #e8f0e9; /* cleaning feature card */
+
+  /* ── Neutral (warm green-grey) ────────────────────────────────────────── */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fbfcfa;
+  --color-neutral-100: #f5f7f3;
+  --color-neutral-150: #eef2ee;
+  --color-neutral-200: #e2e8e5;
+  --color-neutral-250: #dfe7e1;
+  --color-neutral-300: #cdd9d5;
+  --color-neutral-400: #a7b5b1;
+  --color-neutral-500: #7d8d89; /* 3.38:1 — icons ≥24px only, NEVER text */
+  --color-neutral-600: #5a6b66; /* the single muted-text token */
+  --color-neutral-700: #3f524d;
+  --color-neutral-800: #2e433e;
+  --color-neutral-900: #19312c; /* ★ ink */
+  --color-neutral-950: #172c27; /* text on gold fills */
+
+  /* ── Status + utility ─────────────────────────────────────────────────── */
+  --color-danger: #b3261e;
+  --color-danger-fg: #8c1d18;
+  --color-danger-bg: #fef7f6;
+  --color-success-fg: #05502f;
+  --color-success-bg: #eef6f1;
+  --color-whatsapp: #128c7e; /* NOT #25d366 — white glyph on that is 1.98:1 */
+
+  /* ── FONT FAMILIES ────────────────────────────────────────────────────────
+     --font-sans / --font-serif / --font-arabic come from next/font in the
+     locale layout. The literal names are the no-JS / no-next/font fallback. */
+  --font-body: var(--font-sans, "IBM Plex Sans"), "IBM Plex Sans", ui-sans-serif,
+    system-ui, "Segoe UI", Arial, sans-serif;
+  --font-heading: var(--font-serif, "IBM Plex Serif"), "IBM Plex Serif", Georgia,
+    "Times New Roman", serif;
+
+  /* ── TYPE SCALE — Latin / German is the base ──────────────────────────── */
+  --text-display-xl: clamp(2.75rem, 1.75rem + 4.6vw, 5.25rem); /* 44 → 84 */
+  --text-display-xl--line-height: 0.96;
+  --text-display-xl--letter-spacing: -0.032em;
+  --text-display-xl--font-weight: 600;
+
+  --text-display-lg: clamp(2rem, 1.35rem + 2.9vw, 3.25rem); /* 32 → 52 */
+  --text-display-lg--line-height: 1.06;
+  --text-display-lg--letter-spacing: -0.022em;
+  --text-display-lg--font-weight: 600;
+
+  --text-display-md: clamp(1.5rem, 1.2rem + 1.35vw, 2rem); /* 24 → 32 */
+  --text-display-md--line-height: 1.15;
+  --text-display-md--letter-spacing: -0.015em;
+  --text-display-md--font-weight: 600;
+
+  --text-display-sm: 1.4375rem; /* 23 */
+  --text-display-sm--line-height: 1.26;
+  --text-display-sm--letter-spacing: -0.01em;
+  --text-display-sm--font-weight: 600;
+
+  --text-title: 1.25rem; /* 20 */
+  --text-title--line-height: 1.35;
+  --text-title--letter-spacing: -0.005em;
+  --text-title--font-weight: 600;
+
+  --text-lead: 1.1875rem; /* 19 */
+  --text-lead--line-height: 1.7;
+  --text-lead--letter-spacing: 0em;
+  --text-lead--font-weight: 400;
+
+  --text-body: 1rem; /* 16 */
+  --text-body--line-height: 1.65;
+  --text-body--letter-spacing: 0em;
+  --text-body--font-weight: 400;
+
+  --text-body-sm: 0.875rem; /* 14 */
+  --text-body-sm--line-height: 1.6;
+  --text-body-sm--letter-spacing: 0em;
+  --text-body-sm--font-weight: 400;
+
+  --text-label: 0.8125rem; /* 13 */
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.01em;
+  --text-label--font-weight: 600;
+
+  --text-caption: 0.75rem; /* 12 */
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.005em;
+  --text-caption--font-weight: 400;
+
+  --text-eyebrow: 0.75rem; /* 12 */
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.16em;
+  --text-eyebrow--font-weight: 700;
+
+  /* ── RADII ────────────────────────────────────────────────────────────── */
+  --radius-xs: 0.375rem; /*  6 — badges */
+  --radius-sm: 0.5rem; /*  8 — inputs */
+  --radius-md: 0.625rem; /* 10 — buttons */
+  --radius-lg: 0.875rem; /* 14 — service card */
+  --radius-xl: 1.125rem; /* 18 — panels, form card */
+  --radius-2xl: 1.25rem; /* 20 — feature card */
+  --radius-3xl: 1.375rem; /* 22 — modal / sheet */
+  --radius-pill: 9999px;
+
+  /* ── SHADOWS — green-tinted, x-offset ALWAYS 0 so RTL never mirrors ───── */
+  --shadow-xs: 0 1px 2px 0 #0753440f;
+  --shadow-sm: 0 1px 3px 0 #07534414, 0 1px 2px -1px #0753440f;
+  --shadow-md: 0 4px 12px -2px #0753441a, 0 2px 6px -2px #07534414;
+  --shadow-lg: 0 12px 28px -6px #0753441f, 0 4px 10px -4px #07534414;
+  --shadow-xl: 0 24px 56px -12px #07534429, 0 8px 20px -8px #0753441a;
+  --shadow-modal: 0 32px 90px -20px #00000052, 0 8px 24px -12px #00000029;
+  --shadow-fab: 0 8px 24px -4px #04231d4d, 0 2px 8px -2px #04231d33;
+  --shadow-header: 0 1px 0 0 #07534414, 0 6px 18px -12px #07534429;
+
+  /* ── SPACING — 4px base plus the named page rhythm ────────────────────── */
+  --spacing: 0.25rem;
+  --spacing-gutter: clamp(1.25rem, 0.5rem + 4.5vw, 5.5rem); /*  20 →  88 */
+  --spacing-section: clamp(4.5rem, 3rem + 6vw, 7rem); /*  72 → 112 */
+  --spacing-section-lg: clamp(5.5rem, 3.5rem + 8vw, 8.5rem); /*  88 → 136 */
+  --spacing-block: clamp(2rem, 1.5rem + 2vw, 3rem); /*  32 →  48 */
+
+  /* ── CONTAINERS ───────────────────────────────────────────────────────────
+     `--container-page` deliberately replaces the spec's `--container-max`:
+     `max-w-max` is a Tailwind built-in (max-content) and must not be shadowed. */
+  --container-prose: 44rem; /*  704 — section-heading copy */
+  --container-content: 68rem; /* 1088 — grids, forms */
+  --container-wide: 77.5rem; /* 1240 — service split */
+  --container-page: 90rem; /* 1440 — hero, header */
+
+  /* ── BREAKPOINTS — v4 stock plus xs ───────────────────────────────────── */
+  --breakpoint-xs: 26.25rem; /* 420 */
+
+  /* ── MOTION — 4 easings, 5 durations ──────────────────────────────────── */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quad: cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-instant: 90ms;
+  --duration-fast: 160ms;
+  --duration-base: 240ms;
+  --duration-slow: 380ms;
+  --duration-slower: 620ms;
+
+  --animate-reveal: reveal var(--duration-slower) var(--ease-out-expo) both;
+  --animate-fab-in: fab-in var(--duration-base) var(--ease-spring) both;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SEMANTIC LAYER
+   `inline` makes the utilities emit var(--surface) rather than a resolved hex,
+   so [data-surface="dark"] flips an entire subtree at runtime with no extra
+   CSS. Components consume ONLY these tokens — never a primitive, never a hex.
+   ══════════════════════════════════════════════════════════════════════════ */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-warm: var(--surface-warm);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-field: var(--surface-field);
+  --color-surface-field-focus: var(--surface-field-focus);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-surface-overlay: var(--surface-overlay);
+
+  /* Spec-literal text tokens → utilities `text-text-body`, `bg-text-muted`, … */
+  --color-text-body: var(--text-body-color);
+  --color-text-heading: var(--text-heading-color);
+  --color-text-secondary: var(--text-secondary-color);
+  --color-text-muted: var(--text-muted-color);
+  --color-text-on-brand: #ffffff;
+  --color-text-on-accent: #172c27;
+
+  /* Ergonomic aliases. `text-body` is already the font-SIZE utility, so the
+     body text COLOUR is `text-ink`. The other three read naturally. */
+  --color-ink: var(--text-body-color);
+  --color-heading: var(--text-heading-color);
+  --color-secondary: var(--text-secondary-color);
+  --color-muted: var(--text-muted-color);
+
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+
+  --color-accent: var(--accent); /* FILL ONLY */
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: #172c27;
+  --color-accent-text: var(--accent-text); /* gold as TEXT */
+  --color-accent-text-strong: var(--accent-text-strong);
+
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+  --color-border-accent: var(--border-accent);
+
+  --color-focus: var(--focus);
+  --color-focus-halo: var(--focus-halo);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BASE
+   ══════════════════════════════════════════════════════════════════════════ */
+@layer base {
+  :root {
+    color-scheme: light; /* never force-dark the native form controls */
+
+    --font-arabic-stack: var(--font-arabic, "IBM Plex Sans Arabic"),
+      "IBM Plex Sans Arabic", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+
+    --surface: #fffdf9;
+    --surface-alt: #f5f7f3;
+    --surface-warm: #f7f0e5;
+    --surface-raised: #ffffff;
+    --surface-sunken: #eef2ee;
+    --surface-field: #fbfcfa;
+    --surface-field-focus: #ffffff;
+    --surface-inverse: #043b32;
+    --surface-overlay: #03231db8;
+
+    --text-body-color: #19312c;
+    --text-heading-color: #043b32;
+    --text-secondary-color: #3f524d;
+    --text-muted-color: #5a6b66;
+
+    --brand: #075344;
+    --brand-hover: #05493c;
+    --brand-active: #043b32;
+
+    --accent: #c48a16;
+    --accent-hover: #d3a32c;
+    --accent-text: #8a6013;
+    --accent-text-strong: #74520f;
+
+    --border-subtle: #dfe7e1;
+    --border-default: #cdd9d5;
+    --border-strong: #a7b5b1;
+    --border-accent: #a97612;
+
+    --focus: #a97612;
+    --focus-halo: #fffdf9;
+    --shadow-tint: #075344;
+  }
+
+  /* Dark-green scopes: the contact section, the cleaning panel, the green
+     modal. NOT dark mode — colour-scheme deliberately stays light because the
+     white form card lives inside this scope and its native inputs must not
+     be repainted by the browser. */
+  [data-surface="dark"] {
+    --surface: #043b32;
+    --surface-alt: #032e27;
+    --surface-warm: #043b32;
+    --surface-sunken: #032e27;
+    --surface-inverse: #fffdf9;
+
+    --text-body-color: #ffffff;
+    --text-heading-color: #ffffff;
+    --text-secondary-color: #dbe6e2;
+    --text-muted-color: #c7d6d2;
+
+    --brand: #e3bd52;
+    --brand-hover: #f0d68a;
+    --brand-active: #f8e9bf;
+
+    --accent-text: #e3bd52;
+    --accent-text-strong: #f0d68a;
+
+    --border-subtle: #ffffff1f;
+    --border-default: #ffffff33;
+    --border-strong: #ffffff52;
+    --border-accent: #e3bd52;
+
+    --focus: #e3bd52;
+    --focus-halo: #043b32;
+    --shadow-tint: #000000;
+  }
+
+  /* The white form card sitting inside a dark section resets to light. */
+  [data-surface="light"] {
+    --surface: #ffffff;
+    --surface-alt: #f5f7f3;
+    --surface-warm: #f7f0e5;
+    --surface-raised: #ffffff;
+    --surface-sunken: #eef2ee;
+    --surface-inverse: #043b32;
+
+    --text-body-color: #19312c;
+    --text-heading-color: #043b32;
+    --text-secondary-color: #3f524d;
+    --text-muted-color: #5a6b66;
+
+    --brand: #075344;
+    --brand-hover: #05493c;
+    --brand-active: #043b32;
+
+    --accent-text: #8a6013;
+    --accent-text-strong: #74520f;
+
+    --border-subtle: #dfe7e1;
+    --border-default: #cdd9d5;
+    --border-strong: #a7b5b1;
+    --border-accent: #a97612;
+
+    --focus: #a97612;
+    --focus-halo: #ffffff;
+    --shadow-tint: #075344;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* hash anchors must not land underneath the sticky header */
+    scroll-padding-block-start: 6.5rem;
+  }
+
+  body {
+    background-color: var(--surface);
+    color: var(--text-body-color);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--text-heading-color);
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: #c48a1636;
+    color: #19312c;
+  }
+
+  /* ── Focus — one rule, every control ───────────────────────────────────────
+     Zero specificity via :where(), so a component can restyle the ring but
+     never accidentally lose it. The 2px offset renders in the surface colour,
+     which is why the ring only has to clear 3:1 against one background. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: inherit;
+  }
+
+  /* :focus without -visible is never styled — mouse users see nothing. */
+
+  /* ── German ───────────────────────────────────────────────────────────────
+     "Personenstandsdokumente", "Immobilienfinanzierung": German compound
+     nouns break a 320px layout without this. */
+  html[lang="de"] p,
+  html[lang="de"] li,
+  html[lang="de"] dd {
+    hyphens: auto;
+  }
+
+  html[lang="de"] h1,
+  html[lang="de"] h2 {
+    hyphens: manual;
+    overflow-wrap: anywhere;
+  }
+
+  /* ── Arabic ───────────────────────────────────────────────────────────────
+     html[lang="ar"] is (0,1,1) and sits in @layer base, so it beats the
+     :root values emitted by @theme on both specificity and layer order. */
+  html[lang="ar"] {
+    direction: rtl;
+    hyphens: none;
+
+    /* Display sizes DOWN 12–17 %: Arabic ascenders/descenders plus the deep
+       initial/final forms make a Latin-sized headline shouty and two lines
+       long. Body sizes UP 5–8 %: Arabic glyphs are optically smaller
+       relative to the em. Leading opens up substantially in both. */
+    --text-display-xl: clamp(2.375rem, 1.6rem + 3.6vw, 4.375rem); /* 38 → 70 */
+    --text-display-xl--line-height: 1.28;
+    --text-display-xl--letter-spacing: 0em;
+
+    --text-display-lg: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem); /* 28 → 44 */
+    --text-display-lg--line-height: 1.36;
+    --text-display-lg--letter-spacing: 0em;
+
+    --text-display-md: clamp(1.375rem, 1.1rem + 1.2vw, 1.75rem); /* 22 → 28 */
+    --text-display-md--line-height: 1.45;
+    --text-display-md--letter-spacing: 0em;
+
+    --text-display-sm: 1.3125rem; /* 21 */
+    --text-display-sm--line-height: 1.52;
+    --text-display-sm--letter-spacing: 0em;
+
+    --text-title: 1.1875rem; /* 19 */
+    --text-title--line-height: 1.55;
+    --text-title--letter-spacing: 0em;
+
+    --text-lead: 1.25rem; /* 20 */
+    --text-lead--line-height: 1.95;
+    --text-lead--letter-spacing: 0em;
+
+    --text-body: 1.0625rem; /* 17 */
+    --text-body--line-height: 1.9;
+    --text-body--letter-spacing: 0em;
+
+    --text-body-sm: 0.9375rem; /* 15 */
+    --text-body-sm--line-height: 1.85;
+    --text-body-sm--letter-spacing: 0em;
+
+    --text-label: 0.875rem; /* 14 */
+    --text-label--line-height: 1.6;
+    --text-label--letter-spacing: 0em;
+
+    --text-caption: 0.8125rem; /* 13 */
+    --text-caption--line-height: 1.65;
+    --text-caption--letter-spacing: 0em;
+
+    --text-eyebrow: 0.8125rem; /* 13 */
+    --text-eyebrow--line-height: 1.5;
+    --text-eyebrow--letter-spacing: 0em;
+  }
+
+  html[lang="ar"] body,
+  html[lang="ar"] :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-arabic-stack);
+  }
+
+  /* Belt and braces. Positive OR negative tracking severs the cursive joins
+     between Arabic letterforms, and uppercase is meaningless in a script with
+     no case. !important in @layer base outranks any utility that asks. */
+  html[lang="ar"]
+    :is(h1, h2, h3, h4, h5, h6, p, li, a, button, label, span, strong, em, small, dt, dd, th, td, legend, summary) {
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    font-variant-caps: normal;
+  }
+
+  /* Never justify Arabic — the word-space stretching destroys the rhythm. */
+  html[lang="ar"] :is(h1, h2, h3, p, li) {
+    text-align: start;
+  }
+
+  /* Plex Sans Arabic has no italic; the browser would synthesise a sheared,
+     broken join. */
+  html[lang="ar"] :is(em, i, blockquote, cite, address) {
+    font-style: normal;
+  }
+
+  /* Latin runs inside Arabic copy keep the Latin face. */
+  html[lang="ar"] :lang(de),
+  html[lang="ar"] .latin {
+    font-family: var(--font-body);
+  }
+
+  /* THE bidi rule. Without isolation "+49 177 3825632" renders as
+     "3825632 177 49+" in an RTL paragraph and the user cannot dial it. */
+  bdi[dir="ltr"] {
+    unicode-bidi: isolate;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Reduced motion: reveal-on-scroll content is visible by default in CSS,
+     so killing the animation here never hides anything. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   UTILITIES
+   ══════════════════════════════════════════════════════════════════════════ */
+@utility section {
+  padding-block: var(--spacing-section);
+  padding-inline: var(--spacing-gutter);
+}
+
+@utility section-lg {
+  padding-block: var(--spacing-section-lg);
+  padding-inline: var(--spacing-gutter);
+}
+
+@utility focus-ring {
+  &:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: inherit;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   KEYFRAMES
+   ══════════════════════════════════════════════════════════════════════════ */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
