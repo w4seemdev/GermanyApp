@@ -90,9 +90,41 @@ fails WCAG. Gold text is `#8a6013` on light, `#e3bd52` on dark green. Focus ring
 
 ## Status
 
-Milestone 1 in progress: foundation, UI primitives, layout with the language switcher,
-bilingual content, contact form, home page and service pages.
+**Milestone 1 complete — the UI is done and the production build is green.**
 
-Outstanding client data before launch: legal name and legal form, register number,
-USt-IdNr., the Datenschutzerklärung text, real photography, and the logo source files.
-The Impressum renders unknown fields as visible `«…»` placeholders by design.
+Both locales render every route: home, services index, six service detail pages,
+contact, Impressum and Datenschutz. `next build` prerenders 24 static pages.
+
+Verification currently passing:
+
+```
+npx tsc --noEmit                    clean
+node scripts/check-logical-props.mjs   41 files clean
+npm run build                       24/24 static pages
+```
+
+### What the backend developer needs to do
+
+Exactly one file: [`src/lib/contact-transport.ts`](./src/lib/contact-transport.ts).
+It documents the request and response contract inline. Set
+`NEXT_PUBLIC_CONTACT_TRANSPORT=http` and `NEXT_PUBLIC_CONTACT_ENDPOINT`, and the
+form goes live. See [`HANDOFF.md`](./HANDOFF.md).
+
+### Outstanding client data before launch
+
+| Item | Blocks | Where it goes |
+|---|---|---|
+| Legal name incl. legal form | Impressum (§ 5 DDG) | `src/content/shared/nap.ts` |
+| Managing director / owner | Impressum (§ 5 DDG) | `src/content/shared/nap.ts` |
+| Register court + number, USt-IdNr. | Impressum, if applicable | `src/content/shared/nap.ts` |
+| Arabic sign-off by a named person | Launch | `src/content/ar/` |
+| Per-service body copy | Service detail depth | `src/content/{de,ar}/` |
+| Photography and logo source | Hero and cards | `public/` |
+
+The Impressum renders unknown fields as visible `«…»` placeholders by design, and
+`hasUnresolvedPlaceholders()` exists so a release check can fail on them.
+
+**Note for the client:** the confirmed opening hours (Mo–Fr 10:00–16:00) differ
+from the hours their current live draft publishes (Thu 10–15, Fri 10–13). This
+site uses the confirmed hours. Google surfaces these directly in search and Maps,
+so the other site should be corrected.

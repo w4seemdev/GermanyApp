@@ -1,5 +1,5 @@
 /**
- * Locale redirect.
+* Locale redirect (Next 16 proxy; this file was middleware.ts before the rename).
  *
  * Every page lives under an explicit /de or /ar prefix so that `lang` and `dir`
  * are server-rendered and there is no LTR→RTL flash. This sends the bare root
@@ -14,7 +14,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { DEFAULT_LOCALE, LOCALES } from '@/lib/locale';
 
-export function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const hasLocale = LOCALES.some(
